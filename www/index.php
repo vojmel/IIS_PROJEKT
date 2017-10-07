@@ -1,6 +1,7 @@
 <?php
 
+// let bootstrap create Dependency Injection container
 $container = require __DIR__ . '/../app/bootstrap.php';
 
-$container->getByType(Nette\Application\Application::class)
-	->run();
+// run application
+$container->getService('application')->run();
