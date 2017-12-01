@@ -1,19 +1,39 @@
+{**
+ * Layout of Nette Framework example CD collection
+ *
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ * @param Nette\Web\User $user  current user
+ *}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta n:ifset="$robots" name="robots" content="{$robots}">
 
-	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+	<title>{block title|striptags|trim}{/block} | Nette example</title>
+
+	<link rel="stylesheet" media="screen" href="{$basePath}/css/site.css" />
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/nette.ajax.js"></script>
 </head>
 
 <body>
-	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
 
-	{include content}
+	<div id="content">
+		{include content}
+	</div>
 
-	{block scripts}
-	<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
-	{/block}
+	<script src="//nette.github.com/resources/js/netteForms.js"></script>
+
+    <script type="javascript">
+        $(function () {
+            $.nette.init();
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,6 @@
+
+
+database:
+    dsn: 'mysql:dbname=iis;host=localhost;'
+    user: root
+    password:

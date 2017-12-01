@@ -1,0 +1,7 @@
+{
+  "name": "IIS - projekt",
+  "require": {
+    "nette/nette": "~2.3.0",
+    "mesour/datagrid": "~2.0.7"
+  }
+}
