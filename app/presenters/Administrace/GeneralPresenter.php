@@ -470,6 +470,7 @@ class GeneralPresenter extends DefaultAdminPresenter
         $form->addSubmit('send', 'Uložit');
         $form->onSuccess[] = array($this, 'postFormAddSucceeded');
 
+
         return $form;
     }
 
@@ -500,7 +501,7 @@ class GeneralPresenter extends DefaultAdminPresenter
         $insert = false;
 
         // Editace?
-        if ($values[$this->modelManager->getPkColumn()]) {
+        if ($this->getParameter('id')) {
             // Existence?
             $item = $this->modelManager->getSpecific($values[$this->modelManager->getPkColumn()]);
             if ($item) {
