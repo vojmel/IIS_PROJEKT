@@ -121,6 +121,7 @@ class LekarnikPresenter extends GeneralPresenter
      */
     protected function changeValuesBeforeEdit($values)
     {
+        $values['datumNarozeni'] = date('d.m.Y', $values['datumNarozeni']->getTimestamp());
         return $values;
     }
 
@@ -132,6 +133,7 @@ class LekarnikPresenter extends GeneralPresenter
      */
     protected function changeValuesAfterEdit($data)
     {
+        $data["datumNarozeni"] = Nette\DateTime::from($data["datumNarozeni"]);
         return $data;
     }
 }

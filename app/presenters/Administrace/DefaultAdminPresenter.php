@@ -21,7 +21,9 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
         $this->template->menuItems = array(
             'Domů' => 'Homepage:',
             'Léky' => 'Lek:',
-            'Dodavatel' => 'Dodavatel:',
+            'Dodavatelé' => 'Dodavatel:',
+            'Lékárníci' => 'Lekarnik:',
+            'Pobočky' => 'Pobocka:',
         );
     }
 }

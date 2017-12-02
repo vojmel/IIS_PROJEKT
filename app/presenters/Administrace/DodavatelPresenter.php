@@ -27,15 +27,15 @@ class DodavatelPresenter extends GeneralPresenter
         $this->site = 'dodavatel';
         $this->nadpisy = array(
             "default"   => 'Dodavatelé',
-            "edit"      => 'Editace léku: ', // + id editovaneho
-            "add"       => 'Přidání léku:',
-            "select"    => 'Vybrat leky: ',
+            "edit"      => 'Editace dodavatele: ', // + id editovaneho
+            "add"       => 'Přidání dodavatele:',
+            "select"    => 'Vybrat dodavatele: ',
         );
         $this->messages = array(
-            "INSERT_OK" => "Lek byl přidán.",
-            "INSERT_BAD" => "Lek se nepodařilo přidat",
-            "UPDATE_OK" => "Lek byl upraven.",
-            "UPDATE_BAD" => "Lek se nepodařilo upravit.",
+            "INSERT_OK" => "Dodavatel byl přidán.",
+            "INSERT_BAD" => "Dodavatel se nepodařilo přidat",
+            "UPDATE_OK" => "Dodavatel byl upraven.",
+            "UPDATE_BAD" => "Dodavatel se nepodařilo upravit.",
         );
     }
 
@@ -53,6 +53,11 @@ class DodavatelPresenter extends GeneralPresenter
 
         $grid->addText('nazev', 'Název');
 
+
+        $grid->addNumber('ICO', 'IČO');
+
+        $grid->addText('adresa', 'Adresa');
+
         return $grid;
     }
 
@@ -69,23 +74,15 @@ class DodavatelPresenter extends GeneralPresenter
             ->setRequired(true);
 
         // Cislo
-        $form->addText('cena', 'Cena:', 38)
+        $form->addText('ICO', 'IČO:', 11)
             ->setHtmlType('number')
             ->setRequired(true);
 
-        // Check box
-        $form->addCheckbox('napredpis', 'Na předpis: ');
-
-        // Datum
-        $form->addText("datumExpirace", "Datum expirace: ")
-            ->setAttribute("placeholder", "dd.mm.rrrr")
-            ->setRequired(false)
-            ->addRule($form::PATTERN, "Datum musí být ve formátu dd.mm.rrrr", "(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d");
 
         // dlouhe cislo
-        $form->addText('carovyKod', 'Čárový kód')
-            ->setHtmlType('number')
+        $form->addText('adresa', 'Adresa')
             ->setRequired(true);
+
 
         return $form;
     }
@@ -98,7 +95,6 @@ class DodavatelPresenter extends GeneralPresenter
      */
     protected function changeValuesBeforeEdit($values)
     {
-        $values['datumExpirace'] = date('d.m.Y', $values['datumExpirace']->getTimestamp());
 
         return $values;
     }
@@ -111,8 +107,7 @@ class DodavatelPresenter extends GeneralPresenter
      */
     protected function changeValuesAfterEdit($data)
     {
-        // oprava datumu pro zapis do db
-        $data["datumExpirace"] = Nette\DateTime::from($data["datumExpirace"]);
+
         return $data;
     }
 }

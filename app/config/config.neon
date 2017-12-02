@@ -12,3 +12,5 @@ application:
 services:
 	- App\Model\LekManager
 	- App\Model\DodavatelManager
+	- App\Model\LekarnikManager
+	- App\Model\PobockaManager
