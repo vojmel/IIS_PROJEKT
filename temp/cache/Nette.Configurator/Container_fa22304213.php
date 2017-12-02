@@ -28,6 +28,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.6',
 					'application.7',
 					'application.8',
+					'application.9',
 					'container',
 				),
 			),
@@ -82,6 +83,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'27_App_Model_LekManager',
 					'28_App_Model_LekarnikManager',
 					'29_App_Model_PobockaManager',
+					'30_App_Model_PojistovnaManager',
 				),
 			),
 			'App\Model\DodavatelManager' => array(
@@ -94,6 +96,9 @@ class Container_fa22304213 extends Nette\DI\Container
 			'App\Model\PobockaManager' => array(
 				1 => array('29_App_Model_PobockaManager'),
 			),
+			'App\Model\PojistovnaManager' => array(
+				1 => array('30_App_Model_PojistovnaManager'),
+			),
 			'App\Presenters\GeneralPresenter' => array(
 				array(
 					'application.1',
@@ -101,6 +106,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'App\Presenters\DefaultAdminPresenter' => array(
@@ -111,6 +117,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\Application\UI\Presenter' => array(
@@ -121,6 +128,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\Application\UI\Control' => array(
@@ -131,6 +139,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\Application\UI\PresenterComponent' => array(
@@ -141,6 +150,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\ComponentModel\Container' => array(
@@ -151,6 +161,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\ComponentModel\Component' => array(
@@ -161,6 +172,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\Application\IPresenter' => array(
@@ -173,6 +185,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.6',
 					'application.7',
 					'application.8',
+					'application.9',
 				),
 			),
 			'ArrayAccess' => array(
@@ -183,6 +196,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\Application\UI\IStatePersistent' => array(
@@ -193,6 +207,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\Application\UI\ISignalReceiver' => array(
@@ -203,6 +218,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\ComponentModel\IComponent' => array(
@@ -213,6 +229,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\ComponentModel\IContainer' => array(
@@ -223,6 +240,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'Nette\Application\UI\IRenderable' => array(
@@ -233,6 +251,7 @@ class Container_fa22304213 extends Nette\DI\Container
 					'application.4',
 					'application.5',
 					'application.6',
+					'application.7',
 				),
 			),
 			'App\Presenters\DodavatelPresenter' => array(array('application.1')),
@@ -240,8 +259,9 @@ class Container_fa22304213 extends Nette\DI\Container
 			'App\Presenters\LekarnikPresenter' => array(array('application.4')),
 			'App\Presenters\LekPresenter' => array(array('application.5')),
 			'App\Presenters\PobockaPresenter' => array(array('application.6')),
-			'NetteModule\ErrorPresenter' => array(array('application.7')),
-			'NetteModule\MicroPresenter' => array(array('application.8')),
+			'App\Presenters\PojistovnaPresenter' => array(array('application.7')),
+			'NetteModule\ErrorPresenter' => array(array('application.8')),
+			'NetteModule\MicroPresenter' => array(array('application.9')),
 			'Nette\DI\Container' => array(1 => array('container')),
 		),
 		'services' => array(
@@ -249,14 +269,16 @@ class Container_fa22304213 extends Nette\DI\Container
 			'27_App_Model_LekManager' => 'App\Model\LekManager',
 			'28_App_Model_LekarnikManager' => 'App\Model\LekarnikManager',
 			'29_App_Model_PobockaManager' => 'App\Model\PobockaManager',
+			'30_App_Model_PojistovnaManager' => 'App\Model\PojistovnaManager',
 			'application.1' => 'App\Presenters\DodavatelPresenter',
 			'application.2' => 'App\Presenters\GeneralPresenter',
 			'application.3' => 'App\Presenters\HomepagePresenter',
 			'application.4' => 'App\Presenters\LekarnikPresenter',
 			'application.5' => 'App\Presenters\LekPresenter',
 			'application.6' => 'App\Presenters\PobockaPresenter',
-			'application.7' => 'NetteModule\ErrorPresenter',
-			'application.8' => 'NetteModule\MicroPresenter',
+			'application.7' => 'App\Presenters\PojistovnaPresenter',
+			'application.8' => 'NetteModule\ErrorPresenter',
+			'application.9' => 'NetteModule\MicroPresenter',
 			'application.application' => 'Nette\Application\Application',
 			'application.linkGenerator' => 'Nette\Application\LinkGenerator',
 			'application.presenterFactory' => 'Nette\Application\IPresenterFactory',
@@ -294,6 +316,7 @@ class Container_fa22304213 extends Nette\DI\Container
 				'application.6' => TRUE,
 				'application.7' => TRUE,
 				'application.8' => TRUE,
+				'application.9' => TRUE,
 			),
 			'nette.presenter' => array(
 				'application.1' => 'App\Presenters\DodavatelPresenter',
@@ -302,8 +325,9 @@ class Container_fa22304213 extends Nette\DI\Container
 				'application.4' => 'App\Presenters\LekarnikPresenter',
 				'application.5' => 'App\Presenters\LekPresenter',
 				'application.6' => 'App\Presenters\PobockaPresenter',
-				'application.7' => 'NetteModule\ErrorPresenter',
-				'application.8' => 'NetteModule\MicroPresenter',
+				'application.7' => 'App\Presenters\PojistovnaPresenter',
+				'application.8' => 'NetteModule\ErrorPresenter',
+				'application.9' => 'NetteModule\MicroPresenter',
 			),
 		),
 		'aliases' => array(
@@ -380,6 +404,16 @@ class Container_fa22304213 extends Nette\DI\Container
 	public function createService__29_App_Model_PobockaManager()
 	{
 		$service = new App\Model\PobockaManager($this->getService('database.default.context'));
+		return $service;
+	}
+
+
+	/**
+	 * @return App\Model\PojistovnaManager
+	 */
+	public function createService__30_App_Model_PojistovnaManager()
+	{
+		$service = new App\Model\PojistovnaManager($this->getService('database.default.context'));
 		return $service;
 	}
 
@@ -469,9 +503,23 @@ class Container_fa22304213 extends Nette\DI\Container
 
 
 	/**
-	 * @return NetteModule\ErrorPresenter
+	 * @return App\Presenters\PojistovnaPresenter
 	 */
 	public function createServiceApplication__7()
+	{
+		$service = new App\Presenters\PojistovnaPresenter($this->getService('30_App_Model_PojistovnaManager'));
+		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
+			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
+			$this->getService('security.user'), $this->getService('latte.templateFactory'));
+		$service->invalidLinkMode = 5;
+		return $service;
+	}
+
+
+	/**
+	 * @return NetteModule\ErrorPresenter
+	 */
+	public function createServiceApplication__8()
 	{
 		$service = new NetteModule\ErrorPresenter($this->getService('tracy.logger'));
 		return $service;
@@ -481,7 +529,7 @@ class Container_fa22304213 extends Nette\DI\Container
 	/**
 	 * @return NetteModule\MicroPresenter
 	 */
-	public function createServiceApplication__8()
+	public function createServiceApplication__9()
 	{
 		$service = new NetteModule\MicroPresenter($this, $this->getService('http.request'), $this->getService('routing.router'));
 		return $service;
