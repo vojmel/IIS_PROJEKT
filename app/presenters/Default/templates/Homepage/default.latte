@@ -1,0 +1,30 @@
+{block content}
+
+    <h1 n:block="title">Leky</h1>
+
+
+    {control basicDataGrid}
+
+
+
+    {foreach $leky as $post}
+        <div class="post">
+            <h2>{$post->nazev}</h2>
+
+            <h2><a href="{link Post:show $post->lekID}">{$post->nazev}</a></h2>
+        </div>
+    {/foreach}
+
+{*
+    <div n:foreach="$posts as $post" class="post">
+        <div class="date">{$post->created_at|date:'F j, Y'}</div>
+
+        <h2>{$post->title}</h2>
+
+
+        <h2><a n:href="Post:show $post->id">{$post->title}</a></h2>
+
+        <div>{$post->content}</div>
+    </div>
+*}
+{/block}

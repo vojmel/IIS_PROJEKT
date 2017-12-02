@@ -10,5 +10,4 @@ application:
 		*: App\*Module\Presenters\*Presenter
 
 services:
-	- App\Model\Authenticator
-	- App\Model\AlbumRepository
+	- App\Model\LekManager
