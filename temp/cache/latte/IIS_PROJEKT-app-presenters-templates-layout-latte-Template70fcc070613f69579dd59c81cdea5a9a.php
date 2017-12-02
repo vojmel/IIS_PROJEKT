@@ -80,8 +80,6 @@ ob_start(function () {}); call_user_func(reset($_b->blocks['title']), $_b, get_d
 		</div>
 	</nav>
 
-
-
 	<div id="content">
 <?php Latte\Macros\BlockMacrosRuntime::callBlock($_b, 'content', $template->getParameters()) ?>
 	</div>

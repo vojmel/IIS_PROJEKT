@@ -468,7 +468,7 @@ class GeneralPresenter extends DefaultAdminPresenter
 
         // Submit button
         $form->addSubmit('send', 'Uložit');
-        $form->onSuccess[] = [$this, 'postFormAddSucceeded'];
+        $form->onSuccess[] = array($this, 'postFormAddSucceeded');
 
         return $form;
     }

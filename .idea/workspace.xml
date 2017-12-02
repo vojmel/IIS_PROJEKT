@@ -51,8 +51,8 @@
       <file leaf-file-name="DefaultAdminPresenter.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/presenters/Administrace/DefaultAdminPresenter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+            <state relative-caret-position="315">
+              <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="23" selection-end-column="10" />
               <folding>
                 <element signature="e#118#128#0#PHP" expanded="true" />
               </folding>
@@ -60,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomepagePresenter.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomepagePresenter.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/presenters/Administrace/HomepagePresenter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="168">
+              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="e#34#44#0#PHP" expanded="true" />
               </folding>
@@ -106,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneralPresenter.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GeneralPresenter.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/presenters/Administrace/GeneralPresenter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+            <state relative-caret-position="428">
+              <caret line="476" column="7" lean-forward="true" selection-start-line="476" selection-start-column="7" selection-end-line="476" selection-end-column="7" />
               <folding>
                 <element signature="e#34#63#0#PHP" expanded="true" />
               </folding>
@@ -125,6 +125,7 @@
       <find>strip</find>
       <find>new Link(</find>
       <find>'/templates/</find>
+      <find>onSuce</find>
     </findStrings>
     <replaceStrings>
       <replace>'/../templates/</replace>
@@ -181,10 +182,11 @@
         <option value="$PROJECT_DIR$/app/presenters/HomepagePresenter.php" />
         <option value="$PROJECT_DIR$/app/presenters/templates/@layout.latte" />
         <option value="$PROJECT_DIR$/app/presenters/Administrace/LekPresenter.php" />
-        <option value="$PROJECT_DIR$/app/presenters/Administrace/GeneralPresenter.php" />
-        <option value="$PROJECT_DIR$/app/presenters/Default/DefaultPresenter.php" />
         <option value="$PROJECT_DIR$/app/presenters/Administrace/templates/Homepage/default.latte" />
         <option value="$PROJECT_DIR$/app/presenters/Administrace/HomepagePresenter.php" />
+        <option value="$PROJECT_DIR$/app/presenters/Administrace/DefaultAdminPresenter.php" />
+        <option value="$PROJECT_DIR$/app/presenters/Default/DefaultPresenter.php" />
+        <option value="$PROJECT_DIR$/app/presenters/Administrace/GeneralPresenter.php" />
       </list>
     </option>
   </component>
@@ -199,7 +201,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-118" />
     <option name="y" value="-9" />
     <option name="width" value="1400" />
@@ -243,6 +245,20 @@
               <item name="IIS_PROJEKT" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="presenters" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="IIS_PROJEKT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IIS_PROJEKT" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="presenters" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Administrace" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="IIS_PROJEKT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IIS_PROJEKT" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="presenters" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Default" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="IIS_PROJEKT" type="b2602c69:ProjectViewProjectNode" />
@@ -324,7 +340,7 @@
       <workItem from="1512129412514" duration="1131000" />
       <workItem from="1512131724434" duration="373000" />
       <workItem from="1512132122090" duration="10984000" />
-      <workItem from="1512149508761" duration="50248000" />
+      <workItem from="1512149508761" duration="50523000" />
     </task>
     <servers />
   </component>
@@ -337,10 +353,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62736000" />
+    <option name="totallyTimeSpent" value="63011000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1698" height="1028" extended-state="6" />
+    <frame x="-9" y="-9" width="1698" height="1028" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21666667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -743,41 +759,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/presenters/Administrace/GeneralPresenter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
-          <folding>
-            <element signature="e#34#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/presenters/Administrace/templates/Post/show.latte">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/presenters/Default/DefaultPresenter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-          <folding>
-            <element signature="e#118#128#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/presenters/Administrace/DefaultAdminPresenter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
-          <folding>
-            <element signature="e#118#128#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -801,10 +787,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/presenters/Administrace/HomepagePresenter.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="168">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="e#34#44#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/presenters/Administrace/DefaultAdminPresenter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="23" selection-end-column="10" />
+          <folding>
+            <element signature="e#118#128#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/presenters/Default/DefaultPresenter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding>
+            <element signature="e#118#128#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/presenters/Administrace/GeneralPresenter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="476" column="7" lean-forward="true" selection-start-line="476" selection-start-column="7" selection-end-line="476" selection-end-column="7" />
+          <folding>
+            <element signature="e#34#63#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
