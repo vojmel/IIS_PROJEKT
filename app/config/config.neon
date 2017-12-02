@@ -11,3 +11,4 @@ application:
 
 services:
 	- App\Model\LekManager
+	- App\Model\DodavatelManager
