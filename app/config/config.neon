@@ -20,4 +20,3 @@ services:
 	- App\Model\RezervaceManager
 	- App\Model\PredpisManager
 	- App\Model\DoplatekManager
-	- App\Model\ObjednavkaManager
