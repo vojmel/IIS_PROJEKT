@@ -25,6 +25,9 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
             'Lékárníci' => 'Lekarnik:',
             'Pobočky' => 'Pobocka:',
             'Pojišťovna' => 'Pojistovna:',
+            'Prodej' => 'Prodej:',
+            'Sortiment' => 'Sortiment:',
+            'Rezervace' => 'Rezervace:',
         );
     }
 }

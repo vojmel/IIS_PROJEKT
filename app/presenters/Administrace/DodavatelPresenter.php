@@ -54,7 +54,8 @@ class DodavatelPresenter extends GeneralPresenter
         $grid->addText('nazev', 'Název');
 
 
-        $grid->addNumber('ICO', 'IČO');
+        $grid->addNumber('ICO', 'IČO')
+            ->setThousandsSeparator(false);
 
         $grid->addText('adresa', 'Adresa');
 

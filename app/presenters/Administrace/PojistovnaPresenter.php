@@ -44,7 +44,8 @@ class PojistovnaPresenter extends GeneralPresenter
 
         $grid->addNumber('cisloPojistovny', 'Číslo pojišťovny');
 
-        $grid->addNumber('ICO', 'IČO');
+        $grid->addNumber('ICO', 'IČO')
+            ->setThousandsSeparator(false);
 
         $grid->addText('nazev', 'Název');
 
