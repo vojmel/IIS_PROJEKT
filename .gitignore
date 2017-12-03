@@ -8,3 +8,5 @@ temp/cache/latte/
 temp/cache/Nette\.Configurator/
 
 temp/cache/_Nette\.RobotLoader/
+
+temp/
