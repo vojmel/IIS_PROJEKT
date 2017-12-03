@@ -18,4 +18,12 @@ class PojistovnaManager extends GeneralManager
         }
         return "";
     }
+
+    public function getNumber($id){
+        $item = $this->getSpecific($id);
+        if ($item) {
+            return $item->cisloPojistovny;
+        }
+        return "";
+    }
 }
