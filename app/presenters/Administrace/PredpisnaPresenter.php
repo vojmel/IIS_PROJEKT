@@ -24,13 +24,13 @@ class PredpisnaPresenter extends GeneralPresenter
 
         $this->modelManager = $predpisnaManager;
         $this->lekManager = $lekManager;
-        $this->predpisnaManager = $predpisManager;
+        $this->predpisManager = $predpisManager;
 
         $this->site = 'predpisna';
         $this->nadpisy = array(
-            "default"   => 'Predpisu na lék',
+            "default"   => 'Předpisy na léky',
             "edit"      => 'Editace Predpisu na lék: ', // + id editovaneho
-            "add"       => 'Přidání Predpisu na lék:',
+            "add"       => 'Přidání Predpisu na lék: ',
             "select"    => 'Vybrat Predpisu na lék: ',
         );
         $this->messages = array(
@@ -50,6 +50,22 @@ class PredpisnaPresenter extends GeneralPresenter
     protected function defineColumnsForDatagrid($grid)
     {
 
+        $grid->addNumber('predpisnaID', 'ID Předpisu na');
+
+        $grid->addNumber('predpisID', 'ID Předpisu');
+
+        $grid->addNumber('lekID', 'Id léku');
+
+        $grid->addTemplate('lekID', 'Lék nazev')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, PredpisnaPresenter $presenter) {
+                $template->id = $data['lekID'];
+                $template->nazev = $presenter->lekManager->getName($data['lekID']);
+            });
+
+
+        $grid->addNumber('mnozstvi', 'Množství');
         return $grid;
     }
 

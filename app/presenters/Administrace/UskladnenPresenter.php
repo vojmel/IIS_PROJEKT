@@ -27,7 +27,7 @@ class UskladnenPresenter extends GeneralPresenter
 
         $this->site = 'uskladnen';
         $this->nadpisy = array(
-            "default"   => 'uskladnen',
+            "default"   => 'Uskladněné',
             "edit"      => 'Editace uskladnění: ', // + id editovaneho
             "add"       => 'Přidání uskladnění:',
             "select"    => 'Vybrat uskladnění: ',
@@ -50,6 +50,8 @@ class UskladnenPresenter extends GeneralPresenter
     {
         $grid->addNumber('uskladnenID', 'ID Uskladnění');
 
+        $grid->addNumber('lekID', 'Id léku');
+
         $grid->addTemplate('lekID', 'Lék nazev')
             ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
@@ -59,7 +61,16 @@ class UskladnenPresenter extends GeneralPresenter
             });
 
 
-        $grid->addNumber('pobockaID', 'Pobocka');
+        $grid->addNumber('pobockaID', 'Číslo pobočky');
+
+        $grid->addTemplate('pobockaID', 'Pobočka')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                $template->id = $data['pobockaID'];
+                $template->nazev = $presenter->pobockaManager->getName($data['pobockaID']);
+            });
+
         $grid->addNumber('mnozstvi', 'Množství');
 
 

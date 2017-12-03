@@ -53,7 +53,7 @@ class ProdejPresenter extends GeneralPresenter
         $grid->addDate('datum', 'Datum prodeje')
             ->setFormat('j.n.Y H:i:s');
 
-//        $grid->addNumber('pobockaID', 'Pobočka');
+        $grid->addNumber('pobockaID', 'Číslo pobočky');
 
 
         $grid->addTemplate('pobockaID', 'Pobočka')
@@ -65,7 +65,7 @@ class ProdejPresenter extends GeneralPresenter
             });
 
 
-//        $grid->addNumber('lekarnikID', 'Lékarník');
+        $grid->addNumber('lekarnikID', 'Id lékarníka');
 
 
         $grid->addTemplate('lekarnikID', 'Lékárník')

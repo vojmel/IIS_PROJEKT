@@ -2,10 +2,9 @@
 
 namespace App\Presenters;
 
-use App\Model\DoplatekManager;
+use App\Model\ObjednavkaManager;
 use App\Model\LekManager;
 use App\Model\ObjednavkaobsahujeManager;
-use App\Model\PredpisManager;
 use Nette;
 use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Grid,
@@ -17,28 +16,28 @@ class ObjednavkaobsahujePresenter extends GeneralPresenter
 {
 
     public $lekManager;
-    public $predpisManager;
+    public $objednavkaManager;
 
-    public function __construct(ObjednavkaobsahujeManager $objednavkaobsahujeManager, LekManager $lekManager, PredpisManager $predpisManager)
+    public function __construct(ObjednavkaobsahujeManager $objednavkaobsahujeManager, LekManager $lekManager, ObjednavkaManager $objednavkaManager)
     {
         parent::__construct();
 
         $this->modelManager = $objednavkaobsahujeManager;
         $this->lekManager = $lekManager;
-        $this->predpisnaManager = $predpisManager;
+        $this->objednavkaManager = $objednavkaManager;
 
-        $this->site = 'predpisna';
+        $this->site = 'objednavkaobsahuje';
         $this->nadpisy = array(
-            "default"   => 'Predpisu na lék',
-            "edit"      => 'Editace Predpisu na lék: ', // + id editovaneho
-            "add"       => 'Přidání Predpisu na lék:',
-            "select"    => 'Vybrat Predpisu na lék: ',
+            "default"   => 'Obsahy objednávek',
+            "edit"      => 'Editace obsahu objednávky: ', // + id editovaneho
+            "add"       => 'Přidání obsahu objednávky:',
+            "select"    => 'Vybrat obsahu objednávky: ',
         );
         $this->messages = array(
-            "INSERT_OK" => "Predpisu na lék byl přidán.",
-            "INSERT_BAD" => "Predpisu na lék se nepodařilo přidat",
-            "UPDATE_OK" => "Predpisu na lék byl upraven.",
-            "UPDATE_BAD" => "Predpisu na lék se nepodařilo upravit.",
+            "INSERT_OK" => "Obsah objednávky byl přidán.",
+            "INSERT_BAD" => "Obsah objednávky se nepodařilo přidat",
+            "UPDATE_OK" => "Obsah objednávky byl upraven.",
+            "UPDATE_BAD" => "Obsah objednávky se nepodařilo upravit.",
         );
     }
 
@@ -50,6 +49,26 @@ class ObjednavkaobsahujePresenter extends GeneralPresenter
      */
     protected function defineColumnsForDatagrid($grid)
     {
+        $grid->addNumber('objednavkaobsahujeID', 'Id obsahu objednavky');
+
+        $grid->addNumber('objednavkaID', 'Id objednávky');
+
+        $grid->addNumber('lekID', 'Id léku');
+
+        $grid->addTemplate('lekID', 'Lék nazev')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, ObjednavkaobsahujePresenter $presenter) {
+                $template->id = $data['lekID'];
+                $template->nazev = $presenter->lekManager->getName($data['lekID']);
+            });
+
+        $grid->addNumber('cena', 'Cena')
+            ->setDecimals(2)
+            ->setDecimalPoint(',')
+            ->setThousandsSeparator(' ');
+
+        $grid->addNumber('mnozstvi', 'Množství');
 
         return $grid;
     }

@@ -59,9 +59,6 @@ class LekarnikPresenter extends GeneralPresenter
         $grid->addNumber('rodneCislo', 'Rodné číslo')
             ->setThousandsSeparator(false);
 
-
-        ///TODO stav pracovniho pomeru prepis
-
         $grid->addTemplate('stavPracovnbihoPomeru', 'Zaměstnán')
             ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_bool.latte') // or instanceof UI\ITemplate
@@ -118,9 +115,11 @@ class LekarnikPresenter extends GeneralPresenter
         // Check box
         $form->addCheckbox('stavPracovnbihoPomeru', 'Zaměstnán: ');
 
-        $form->addText('pobockaID', 'ID pobočky:', 11)
-            ->setHtmlType('number')
-            ->setRequired(true);
+        $form->addSelectItem('pobockaID', 'Pobočka: ', 'pobocka')
+            ->setSearchOne(true)
+            ->setRequired('Field "Pobočka" is required.')
+            ->setButtonLabel("Vybrat pobočku");
+
 
 
         return $form;

@@ -2,10 +2,10 @@
 
 namespace App\Presenters;
 
-use App\Model\DoplatekManager;
 use App\Model\LekManager;
 use App\Model\ObsahujeManager;
 use App\Model\PredpisManager;
+use App\Model\RezervaceManager;
 use Nette;
 use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Grid,
@@ -17,20 +17,20 @@ class ObsahujePresenter extends GeneralPresenter
 {
 
     public $lekManager;
-    public $predpisManager;
+    public $rezervaceManager;
 
-    public function __construct(ObsahujeManager $predpisnaManager, LekManager $lekManager, PredpisManager $predpisManager)
+    public function __construct(ObsahujeManager $obsahujeManager, LekManager $lekManager, RezervaceManager $rezervaceManager)
     {
         parent::__construct();
 
-        $this->modelManager = $predpisnaManager;
+        $this->modelManager = $obsahujeManager;
         $this->lekManager = $lekManager;
-        $this->predpisnaManager = $predpisManager;
+        $this->rezervaceManager = $rezervaceManager;
 
-        $this->site = 'predpisna';
+        $this->site = 'obsahuje';
         $this->nadpisy = array(
-            "default"   => 'Predpisu na lék',
-            "edit"      => 'Editace Predpisu na lék: ', // + id editovaneho
+            "default"   => 'Obsahuje',
+            "edit"      => 'Editace objednavka Obsahuje: ', // + id editovaneho
             "add"       => 'Přidání Predpisu na lék:',
             "select"    => 'Vybrat Predpisu na lék: ',
         );
@@ -50,6 +50,21 @@ class ObsahujePresenter extends GeneralPresenter
      */
     protected function defineColumnsForDatagrid($grid)
     {
+        $grid->addNumber('obsahujeID', 'Id');
+
+        $grid->addNumber('lekID', 'Id léku');
+
+        $grid->addTemplate('lekID', 'Lék nazev')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, ObsahujePresenter $presenter) {
+                $template->id = $data['lekID'];
+                $template->nazev = $presenter->lekManager->getName($data['lekID']);
+            });
+
+        $grid->addNumber('rezervaceID', 'Id rezervace');
+
+        $grid->addNumber('mnozstvi', 'Množství');
 
         return $grid;
     }

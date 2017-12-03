@@ -60,16 +60,16 @@ class PredpisPresenter extends GeneralPresenter
         $grid->addNumber('prodejID', 'Číslo prodeje')
             ->setThousandsSeparator(false);
 
-        $grid->addNumber('pojistovnaID', 'ID Číslo pojišťovny')
-            ->setThousandsSeparator(false);
+//        $grid->addNumber('pojistovnaID', 'ID Číslo pojišťovny')
+//            ->setThousandsSeparator(false);
 
-//        $grid->addTemplate('cisloPojistovny', 'Číslo pojišťovny')
-//            ->setCallbackArguments(array($this))
-//            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
-//            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
-//                $template->id = $data['pojistovnaID'];
-//                $template->nazev = $presenter->pojistovnaManager->getNumber($data['cisloPojistovny']);
-//            });
+        $grid->addTemplate('cisloPojistovny', 'Číslo pojišťovny')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                $template->id = $data['pojistovnaID'];
+                $template->nazev = $presenter->pojistovnaManager->getNumber($data['pojistovnaID']);
+            });
 
         $grid->addTemplate('pojistovnaID', 'Pojišťovna nazev')
             ->setCallbackArguments(array($this))

@@ -4,7 +4,7 @@ namespace App\Presenters;
 
 use App\Model\SortimentManager;
 use App\Model\LekManager;
-use App\Model\ProdejManager;
+use App\Model\DodavatelManager;
 use App\Model\UskladnenManager;
 use Nette;
 use Mesour\DataGrid\NetteDbDataSource,
@@ -16,15 +16,15 @@ use Nette\Application\UI\Form;
 class SortimentPresenter extends GeneralPresenter
 {
     public $lekManager;
-    public $prodejManager;
+    public $dodavatelManager;
 
-    public function __construct(SortimentManager $sortimentManager, LekManager $lekManager, ProdejManager $prodejManager)
+    public function __construct(SortimentManager $sortimentManager, LekManager $lekManager, DodavatelManager $dodavatelManager)
     {
         parent::__construct();
 
         $this->modelManager = $sortimentManager;
         $this->lekManager = $lekManager;
-        $this->prodejManager = $prodejManager;
+        $this->dodavatelManager = $dodavatelManager;
 
         $this->site = 'sortiment';
         $this->nadpisy = array(
@@ -49,7 +49,19 @@ class SortimentPresenter extends GeneralPresenter
      */
     protected function defineColumnsForDatagrid($grid)
     {
-        $grid->addNumber('sortimentID', 'ID sortimentu');
+        $grid->addNumber('sortimentID', 'Id sortimentu');
+
+        $grid->addNumber('dodavatelID', 'Id dodavatele');
+
+        $grid->addTemplate('dodavatelID', 'Dodavatel')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, SortimentPresenter $presenter) {
+                $template->id = $data['dodavatelID'];
+                $template->nazev = $presenter->dodavatelManager->getName($data['dodavatelID']);
+            });
+
+        $grid->addNumber('lekID', 'Id léku');
 
         $grid->addTemplate('lekID', 'Lék nazev')
             ->setCallbackArguments(array($this))
@@ -60,8 +72,12 @@ class SortimentPresenter extends GeneralPresenter
             });
 
 
-        $grid->addNumber('cena', 'Cena');
-        $grid->addNumber('dodavatelID', 'Dodavatel');
+        $grid->addNumber('cena', 'Cena')
+            ->setDecimals(2)
+            ->setDecimalPoint(',')
+            ->setThousandsSeparator(' ');
+
+
 
 
 

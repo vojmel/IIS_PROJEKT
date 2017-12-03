@@ -55,9 +55,6 @@ class SeznampolozekPresenter extends GeneralPresenter
 
         $grid->addNumber('prodejID', 'Id prodeje');
 
-        $grid->addNumber('mnozstvi', 'Množství');
-
-
         $grid->addNumber('lekID', 'Lék Id');
 
         $grid->addTemplate('lekID', 'Lék nazev')
@@ -68,12 +65,12 @@ class SeznampolozekPresenter extends GeneralPresenter
                 $template->nazev = $presenter->lekManager->getName($data['lekID']);
             });
 
-
-
         $grid->addNumber('cena', 'Cena')
             ->setDecimals(2)
             ->setDecimalPoint(',')
             ->setThousandsSeparator(' ');
+
+        $grid->addNumber('mnozstvi', 'Množství');
 
         return $grid;
     }

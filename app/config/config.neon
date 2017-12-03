@@ -24,4 +24,5 @@ services:
 	- App\Model\SeznampolozekManager
 	- App\Model\PredpisnaManager
 	- App\Model\ObsahujeManager
+	- App\Model\ObjednavkaManager
 	- App\Model\ObjednavkaobsahujeManager

@@ -50,7 +50,7 @@ class RezervacePresenter extends GeneralPresenter
     {
         $grid->addNumber('rezervaceID', 'Id');
 
-        $grid->addText('jmenoZakaznika', 'Jmno Zakaznika');
+        $grid->addText('jmenoZakaznika', 'Jméno Zakaznika');
 
         $grid->addDate('datumExpirace', 'Datum expirace')
             ->setFormat('j.n.Y H:i:s');
@@ -63,8 +63,6 @@ class RezervacePresenter extends GeneralPresenter
             });
 
         $grid->addNumber('pobockaID', 'Pobočka');
-
-
 
         $grid->addTemplate('pobockaID', 'Pobočka')
             ->setCallbackArguments(array($this))
