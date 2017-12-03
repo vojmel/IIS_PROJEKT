@@ -9,17 +9,7 @@
     <bookmark url="file://$PROJECT_DIR$/app/presenters/Administrace/GeneralPresenter.php" line="33" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="574f2ee7-964b-48ce-aa08-40fe1bfaa9c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/model/PredpisManager.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/presenters/Administrace/PredpisPresenter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/_Nette.RobotLoader/_c6d51f085a57b53bff7f7af19f5c755a" afterPath="$PROJECT_DIR$/temp/cache/_Nette.RobotLoader/_c6d51f085a57b53bff7f7af19f5c755a" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.neon" afterPath="$PROJECT_DIR$/app/config/config.neon" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/presenters/Administrace/DefaultAdminPresenter.php" afterPath="$PROJECT_DIR$/app/presenters/Administrace/DefaultAdminPresenter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/presenters/Administrace/LekarnikPresenter.php" afterPath="$PROJECT_DIR$/app/presenters/Administrace/LekarnikPresenter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/Nette.Configurator/Container_fa22304213.php" afterPath="$PROJECT_DIR$/temp/cache/Nette.Configurator/Container_fa22304213.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp/cache/Nette.Configurator/Container_fa22304213.php.meta" afterPath="$PROJECT_DIR$/temp/cache/Nette.Configurator/Container_fa22304213.php.meta" />
-    </list>
+    <list default="true" id="574f2ee7-964b-48ce-aa08-40fe1bfaa9c6" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +49,8 @@
         <entry file="file://$PROJECT_DIR$/app/config/config.neon">
 >>>>>>> master
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+            <state relative-caret-position="357">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -352,8 +342,28 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <component name="ProjectFrameBounds">
 <<<<<<< Updated upstream
+=======
+  <component name="ProjectFrameBounds" extendedState="1">
+>>>>>>> Stashed changes
+=======
+  <component name="ProjectFrameBounds" extendedState="1">
+>>>>>>> Stashed changes
+=======
+  <component name="ProjectFrameBounds" extendedState="1">
+>>>>>>> Stashed changes
+=======
+  <component name="ProjectFrameBounds" extendedState="1">
+>>>>>>> Stashed changes
+=======
+  <component name="ProjectFrameBounds" extendedState="1">
+>>>>>>> Stashed changes
     <option name="x" value="-7" />
     <option name="width" value="1391" />
     <option name="height" value="1047" />
@@ -501,6 +511,11 @@
       <workItem from="1512132122090" duration="10984000" />
 <<<<<<< Updated upstream
       <workItem from="1512149508761" duration="52531000" />
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
       <workItem from="1512254211340" duration="3014000" />
 =======
@@ -509,6 +524,21 @@
 =======
       <workItem from="1512254211340" duration="7239000" />
 >>>>>>> master
+=======
+      <workItem from="1512254211340" duration="7471000" />
+>>>>>>> Stashed changes
+=======
+      <workItem from="1512254211340" duration="7471000" />
+>>>>>>> Stashed changes
+=======
+      <workItem from="1512254211340" duration="7471000" />
+>>>>>>> Stashed changes
+=======
+      <workItem from="1512254211340" duration="7471000" />
+>>>>>>> Stashed changes
+=======
+      <workItem from="1512254211340" duration="7471000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -521,15 +551,35 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="69894000" />
 =======
     <option name="totallyTimeSpent" value="74119000" />
 >>>>>>> master
+=======
+    <option name="totallyTimeSpent" value="74351000" />
+>>>>>>> Stashed changes
+=======
+    <option name="totallyTimeSpent" value="74351000" />
+>>>>>>> Stashed changes
+=======
+    <option name="totallyTimeSpent" value="74351000" />
+>>>>>>> Stashed changes
+=======
+    <option name="totallyTimeSpent" value="74351000" />
+>>>>>>> Stashed changes
+=======
+    <option name="totallyTimeSpent" value="74351000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1391" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="1391" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17672728" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1143,8 +1193,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/config.neon">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="24" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
