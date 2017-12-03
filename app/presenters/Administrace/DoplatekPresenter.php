@@ -15,8 +15,8 @@ use Nette\Application\UI\Form;
 class DoplatekPresenter extends GeneralPresenter
 {
 
-    private $lekManager;
-    private $pojistovnaManager;
+    public $lekManager;
+    public $pojistovnaManager;
 
     public function __construct(DoplatekManager $doplatekManager, LekManager $lekManager, PojistovnaManager $pojistovnaManager)
     {
@@ -51,25 +51,28 @@ class DoplatekPresenter extends GeneralPresenter
     {
         $grid->addNumber('doplatekID', 'Id');
 
-
         $grid->addNumber('pojistovnaID', 'Pojišťovna Id');
-
-        $grid->addTemplate('pojistovnaID', 'Pojišťovna nazev')
-            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
-                $template->id = $data['pojistovnaID'];
-                $template->nazev = $this->pojistovnaManager->getName($data['pojistovnaID']);
-            });
 
 
         $grid->addNumber('lekID', 'Lék Id');
 
         $grid->addTemplate('lekID', 'Lék nazev')
+            ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, DoplatekPresenter $presenter) {
                 $template->id = $data['lekID'];
-                $template->nazev = $this->lekManager->getName($data['lekID']);
+                $template->nazev = $presenter->lekManager->getName($data['lekID']);
             });
+
+        $grid->addTemplate('pojistovnaID', 'Pojišťovna nazev')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                $template->id = $data['pojistovnaID'];
+                $template->nazev = $presenter->pojistovnaManager->getName($data['pojistovnaID']);
+            });
+
+
 
         $grid->addNumber('cena', 'Cena')
             ->setDecimals(2)
@@ -98,6 +101,7 @@ class DoplatekPresenter extends GeneralPresenter
             ->setSearchOne(true)
             ->setRequired('Field "Pojišťovna" is required.')
             ->setButtonLabel("Vybrat pojišťovnu");
+
 
         $form->addSelectItem('lekID', 'Lék: ', 'lek')
             ->setSearchOne(true)

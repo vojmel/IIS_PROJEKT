@@ -60,8 +60,9 @@ class LekarnikPresenter extends GeneralPresenter
         ///TODO stav pracovniho pomeru prepis
 
         $grid->addTemplate('stavPracovnbihoPomeru', 'Zaměstnán')
+            ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_bool.latte') // or instanceof UI\ITemplate
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
                 $template->state = $data['stavPracovnbihoPomeru'];
             });
 
@@ -69,8 +70,9 @@ class LekarnikPresenter extends GeneralPresenter
             ->setThousandsSeparator(false);
 
         $grid->addTemplate('pobockaID', 'Pobočka název')
+            ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
                 $template->id = $data['pobockaID'];
                 $template->nazev = $data['pobockaID'];
             });

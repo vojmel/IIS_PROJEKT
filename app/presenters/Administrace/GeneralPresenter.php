@@ -86,7 +86,7 @@ class GeneralPresenter extends DefaultAdminPresenter
         $template = $this->template;
         $template->setFile($this->templateForEdit);
 
-        $item = $this->modelManager->getSpecific($id);
+        $item = $this->getModelManager()->getSpecific($id);
         if (!$item) {
             $this->error('Prvek nebyl nalezen.');
         }
@@ -163,6 +163,7 @@ class GeneralPresenter extends DefaultAdminPresenter
 
 
     protected $showPocetSelected = true;
+    protected $showSelectedItems = false;
     /**
      * Pro vzpis vyselectovanych itemu
      *
@@ -170,8 +171,7 @@ class GeneralPresenter extends DefaultAdminPresenter
      */
     public function renderSelecteditems($show, $showPocet) {
 
-
-        Debugger::$bar = FALSE;
+        $this->showSelectedItems = true;
 
         $this->processSelectedItems($show); // ziskani id a poctu ze stringu
 
@@ -228,7 +228,7 @@ class GeneralPresenter extends DefaultAdminPresenter
         }
 
         // Hidden pk
-        $this['addForm']->addHidden($this->modelManager->getPkColumn());
+        $this['addForm']->addHidden($this->getModelManager()->getPkColumn());
 
         // Uzivatelska zmena polozek
         $upravenePolozky = $this->beforeEditChangeValues($item->toArray());
@@ -285,10 +285,15 @@ class GeneralPresenter extends DefaultAdminPresenter
                 }
             }
         }
+        else {
+            if ($this->haveToFilter()) {
+                "-9999999999";
+            }
+        }
     }
 
     protected function haveToFilter(){
-        return (count($this->selectedItems) > 0);
+        return $this->showSelectedItems;
     }
 
     protected function generateWhere() {
@@ -322,9 +327,10 @@ class GeneralPresenter extends DefaultAdminPresenter
         if ($this->showPocetSelected) {
             // pridani postu itemu
             $grid->addTemplate('pocet', 'Počet')
+                ->setCallbackArguments(array($this))
                 ->setTemplate(__DIR__ . '/templates/Column/_number.latte')
-                ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
-                    $template->value = $this->getPocetForId($data[$this->modelManager->getPkColumn()]);
+                ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                    $template->value = $presenter->getPocetForId($data[$presenter->getModelManager()->getPkColumn()]);
                 });
         }
         return $grid;
@@ -364,11 +370,11 @@ class GeneralPresenter extends DefaultAdminPresenter
      */
     protected function createDataGrid($name) {
         // Set source
-        $source = new NetteDbDataSource($this->modelManager->getAll());
-        $source->setPrimaryKey($this->modelManager->getPkColumn());
+        $source = new NetteDbDataSource($this->getModelManager()->getAll());
+        $source->setPrimaryKey($this->getModelManager()->getPkColumn());
 
         if ($this->haveToFilter()) {
-            $source->where($this->modelManager->getPkColumn(), $this->generateWhere());
+            $source->where($this->getModelManager()->getPkColumn(), $this->generateWhere());
         }
 
 
@@ -379,7 +385,7 @@ class GeneralPresenter extends DefaultAdminPresenter
         $grid->setLocale('cs');
 
         $grid->setEmptyText('Tabulka je prazdna'); // Kdyz nic
-        $grid->setPrimaryKey($this->modelManager->getPkColumn());
+        $grid->setPrimaryKey($this->getModelManager()->getPkColumn());
 
         $grid->setDataSource($source);
 
@@ -401,7 +407,7 @@ class GeneralPresenter extends DefaultAdminPresenter
             ->setIcon('glyphicon-pencil')
             ->setTitle('Edit')
             ->setAttribute('href', new Link('edit', array(
-                'id' => '{' . $this->modelManager->getPkColumn() . '}'
+                'id' => '{' . $this->getModelManager()->getPkColumn() . '}'
             )));
 
         $actions->addButton()
@@ -410,7 +416,7 @@ class GeneralPresenter extends DefaultAdminPresenter
             ->setConfirm('Opravdu chcete smazat?')
             ->setTitle('Delete')
             ->setAttribute('href', new Link('delete!', array(
-                'id' => '{' . $this->modelManager->getPkColumn() . '}'
+                'id' => '{' . $this->getModelManager()->getPkColumn() . '}'
             )));
 
         return $grid;
@@ -451,9 +457,10 @@ class GeneralPresenter extends DefaultAdminPresenter
 
         // pridani check boxu
         $grid->addTemplate('checkbox', '')
+            ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_checkBox.latte')
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
-                $template->id = $data[$this->modelManager->getPkColumn()];
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                $template->id = $data[$presenter->getModelManager()->getPkColumn()];
             });
 
         $grid = $this->addColumnsToGrid($grid); // pridani sloupecku
@@ -461,9 +468,10 @@ class GeneralPresenter extends DefaultAdminPresenter
         if ($this->showPocetSelected) {
             // pridani selectu postu itemu
             $grid->addTemplate('pocet', 'Počet')
+                ->setCallbackArguments(array($this))
                 ->setTemplate(__DIR__ . '/templates/Column/_numberOfItems.latte')
-                ->setCallback(function ($data, Nette\Application\UI\ITemplate $template) {
-                    $template->id = $data[$this->modelManager->getPkColumn()];
+                ->setCallback(function ($data, Nette\Application\UI\ITemplate $template,$presenter) {
+                    $template->id = $data[$presenter->getModelManager()->getPkColumn()];
                 });
         }
 
@@ -566,5 +574,9 @@ class GeneralPresenter extends DefaultAdminPresenter
 
 
 
+
+    public function getModelManager() {
+        return $this->modelManager;
+    }
 
 }
