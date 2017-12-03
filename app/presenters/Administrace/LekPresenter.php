@@ -59,8 +59,9 @@ class LekPresenter extends GeneralPresenter
 
 
         $grid->addTemplate('napredpis', 'Na předpis')
+            ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_bool.latte') // or instanceof UI\ITemplate
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
                 $template->state = $data['napredpis'];
             });
 

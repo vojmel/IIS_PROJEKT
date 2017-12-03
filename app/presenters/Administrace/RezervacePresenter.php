@@ -50,8 +50,9 @@ class RezervacePresenter extends GeneralPresenter
             ->setFormat('j.n.Y H:i:s');
 
         $grid->addTemplate('vyzvednuto', 'Vyzvednuto')
+            ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_bool.latte') // or instanceof UI\ITemplate
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
                 $template->state = $data['vyzvednuto'];
             });
 

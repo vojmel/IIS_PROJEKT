@@ -13,4 +13,12 @@ class DodavatelManager extends GeneralManager
 {
     protected $tableName = 'dodavatel';
     protected $pkColumn = 'dodavatelID';
+
+    public function getName($id){
+        $item = $this->getSpecific($id);
+        if ($item) {
+            return $item->nazev;
+        }
+        return "";
+    }
 }
