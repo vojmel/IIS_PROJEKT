@@ -48,6 +48,7 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
             'Uskladnění' => 'Uskladnen:',
             'Správa uživatelů' => 'Uzivatel:',
             'Správa rolí' => 'Role:',
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
@@ -57,6 +58,8 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
             'Objednávka' => 'Objednavka:',
             'Obsah Objednavky' => 'Objednavkaobsahuje:',
             'Obsahuje' => 'Obsahuje:',
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         );
