@@ -21,3 +21,4 @@ services:
 	- App\Model\PredpisManager
 	- App\Model\DoplatekManager
 	- App\Model\UskladnenManager
+	- App\Model\SeznampolozekManager

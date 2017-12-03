@@ -33,6 +33,7 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
             'Předpisy' => 'Predpis:',
             'Doplatek na lek' => 'Doplatek:',
             'Uskladnění' => 'Uskladnen:',
+            'Seznamy položek' => 'Seznampolozek:',
         );
     }
 }

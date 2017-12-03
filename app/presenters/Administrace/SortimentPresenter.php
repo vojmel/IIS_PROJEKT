@@ -3,6 +3,9 @@
 namespace App\Presenters;
 
 use App\Model\SortimentManager;
+use App\Model\LekManager;
+use App\Model\ProdejManager;
+use App\Model\UskladnenManager;
 use Nette;
 use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Grid,
@@ -12,12 +15,16 @@ use Nette\Application\UI\Form;
 
 class SortimentPresenter extends GeneralPresenter
 {
+    public $lekManager;
+    public $prodejManager;
 
-    public function __construct(SortimentManager $sortimentManager)
+    public function __construct(SortimentManager $sortimentManager, LekManager $lekManager, ProdejManager $prodejManager)
     {
         parent::__construct();
 
         $this->modelManager = $sortimentManager;
+        $this->lekManager = $lekManager;
+        $this->prodejManager = $prodejManager;
 
         $this->site = 'sortiment';
         $this->nadpisy = array(
@@ -42,10 +49,21 @@ class SortimentPresenter extends GeneralPresenter
      */
     protected function defineColumnsForDatagrid($grid)
     {
-        $grid->addNumber('lekID', 'Lék');
+        $grid->addNumber('sortimentID', 'ID sortimentu');
+
+        $grid->addTemplate('lekID', 'Lék nazev')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, SortimentPresenter $presenter) {
+                $template->id = $data['lekID'];
+                $template->nazev = $presenter->lekManager->getName($data['lekID']);
+            });
+
+
         $grid->addNumber('cena', 'Cena');
         $grid->addNumber('dodavatelID', 'Dodavatel');
-        $grid->addNumber('sortimentID', 'ID sortimentu');
+
+
 
 
         return $grid;
@@ -59,15 +77,6 @@ class SortimentPresenter extends GeneralPresenter
      */
     protected function defineInputsForForm($form)
     {
-        $form->addText('cena', 'Cena:', 38)
-            ->setHtmlType('number')
-            ->setRequired(true);
-
-        ///TODO LIST POBOCEK
-        ///TODO LIST ZAMESTNANCU KDO PRODEJ USKUTECNIL
-        ///TODO automaticky vytvaret datum  prodeje
-
-
         return $form;
     }
 
@@ -93,3 +102,4 @@ class SortimentPresenter extends GeneralPresenter
         return $data;
     }
 }
+

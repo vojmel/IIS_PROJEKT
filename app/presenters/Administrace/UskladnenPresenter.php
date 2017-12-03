@@ -14,8 +14,8 @@ use Nette\Application\UI\Form;
 
 class UskladnenPresenter extends GeneralPresenter
 {
-    private $lekManager;
-    private $pobockaManager;
+    public $lekManager;
+    public $pobockaManager;
 
     public function __construct(UskladnenManager $uskladnenManager, LekManager $lekManager, PobockaManager $pobockaManager)
     {
@@ -51,12 +51,12 @@ class UskladnenPresenter extends GeneralPresenter
         $grid->addNumber('uskladnenID', 'ID Uskladnění');
 
         $grid->addTemplate('lekID', 'Lék nazev')
+            ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, UskladnenPresenter $presenter) {
                 $template->id = $data['lekID'];
-                $template->nazev = $this->lekManager->getName($data['lekID']);
+                $template->nazev = $presenter->lekManager->getName($data['lekID']);
             });
-
 
 
         $grid->addNumber('pobockaID', 'Pobocka');
