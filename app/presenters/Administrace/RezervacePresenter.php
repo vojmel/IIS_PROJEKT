@@ -15,6 +15,8 @@ class RezervacePresenter extends GeneralPresenter
 
     public function __construct(RezervaceManager $rezervaceManager)
     {
+        parent::__construct();
+
         $this->modelManager = $rezervaceManager;
 
         $this->site = 'rezervace';

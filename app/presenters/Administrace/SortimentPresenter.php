@@ -15,6 +15,8 @@ class SortimentPresenter extends GeneralPresenter
 
     public function __construct(SortimentManager $sortimentManager)
     {
+        parent::__construct();
+
         $this->modelManager = $sortimentManager;
 
         $this->site = 'sortiment';

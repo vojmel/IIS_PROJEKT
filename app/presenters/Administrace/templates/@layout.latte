@@ -16,12 +16,22 @@
 	<!-- Bootstrap + theme-->
 	<link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{$basePath}/css/bootstrap-theme.min.css">
+
+
+	<script src="{$basePath}/js/netteForms.js"></script>
+	<script type="text/javascript">
+        function getBasePath() {
+            return {$basePath};
+        }
+	</script>
+	<script src="{$basePath}/js/main.js"></script>
+
 </head>
 
 <body>
-	<div n:foreach="$flashes as $flash" class="alert alert-dismissable alert-{$flash->type} fade in" style="position: absolute; z-index: 1000; width: 100%;"><strong>{$flash->type}</strong> {$flash->message}</div>
+	<div n:foreach="$flashes as $flash" id="falshMessage" class="alert alert-dismissable alert-{$flash->type} fade in" style="position: absolute; z-index: 1000; width: 100%;"><strong>{$flash->type}</strong> {$flash->message}</div>
 
-	<nav class="navbar navbar-light" style="background-color: #e6eaf2;">
+	<nav class="navbar navbar-light" id="menu" style="background-color: #e6eaf2;">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" n:href="Homepage:default">Administrace</a>
@@ -38,12 +48,5 @@
 		{include content}
 	</div>
 
-	<script src="{$basePath}/js/netteForms.js"></script>
-	<script type="text/javascript">
-		function getBasePath() {
-			return {$basePath};
-        }
-	</script>
-	<script src="{$basePath}/js/main.js"></script>
 </body>
 </html>

@@ -1,6 +1,12 @@
-$(".alert")
+$(document).ready(function () {
+    $(".alert")
         .delay(3000)
         .slideUp(500);
+
+    $("#falshMessage")
+        .delay(3000)
+        .slideUp(500);
+});
 
 /* Number spinner */
 $(document).on('click', '.number-spinner button', function () {
@@ -42,9 +48,27 @@ function getSelectedData(site, ids, showPocet, idProData) {
     var showPocetVal = '0';
     if (showPocet) {
         showPocetVal = '1';
+        if (showPocet == 'false') {
+            showPocetVal = '0';
+        }
     }
+
+    //alert(getBasePath()+'/'+site+'/selecteditems?show='+ids+'&showPocet='+showPocetVal);
+
     var data = httpGet(getBasePath()+'/'+site+'/selecteditems?show='+ids+'&showPocet='+showPocetVal);
-    document.getElementById(idProData).innerHTML = data;
+
+    var vystup = $('#'+idProData);
+    vystup.hide();
+
+    vystup.html(data);
+    var selectedItems = vystup.find('#selectedItems');
+    vystup.html('').append(selectedItems);
+    vystup.find("a").each(function() {
+        this.setAttribute('href', '');
+    });
+    vystup.find('script').remove();
+
+    vystup.show();
 }
 
 
@@ -92,7 +116,11 @@ function changeStateOn(id) {
 }
 // Pocet vybranych
 function getNumberOf(id) {
-    return document.getElementById('numberOfItems'+id).value;
+    var item = document.getElementById('numberOfItems'+id);
+    if (item) {
+        return item.value;
+    }
+    return "";
 }
 function httpGet(theUrl) {
     var xmlHttp = new XMLHttpRequest();
@@ -105,15 +133,15 @@ function canSelectOunlyOne() {
     return (!canSelectMoreTrue);
 }
 
-function sendDataToParent(site) {
+function sendDataToParent(site, showPocet) {
     var dataToSend = getIdsFromArray(selectedIds);
-    window.opener.selectSetDataFromChild(dataToSend, site);
+    window.opener.selectSetDataFromChild(dataToSend, site, showPocet);
     window.close();
 }
 
 
 // callback function from parent
-function selectSetDataFromChild(data, site) {
+function selectSetDataFromChild(data, site, showPocet) {
 
     if (idForDataFromSelect == 'NO_ID') {
         console.warn("No ID setted for data from select.");
@@ -133,7 +161,7 @@ function selectSetDataFromChild(data, site) {
         console.warn("No ID setted for data from select.");
         return;
     }
-    getSelectedData(site, dataForSlect, true, idForDataFromSelectDatagrid);
+    getSelectedData(site, dataForSlect, showPocet, idForDataFromSelectDatagrid);
 }
 
 
@@ -158,3 +186,11 @@ function openWindowForSelect(site) {
 function openWindowForSelectOne(site) {
     popup(getBasePath()+'/'+site+'/select?one=true', '', 800, 600);
 }
+
+function getSelectedItemsFor(inputId, site, showPocet, idForGrid) {
+
+    console.log(inputId, site, showPocet, idForGrid);
+    if ($('#' + inputId).val().length != 0) {
+        getSelectedData(site, $('#' + inputId).val(), showPocet, idForGrid);
+    }
+};

@@ -112,7 +112,7 @@ class Debugger
 	private static $blueScreen;
 
 	/** @var Bar */
-	private static $bar;
+	public static $bar;
 
 	/** @var ILogger */
 	private static $logger;

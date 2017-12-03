@@ -10,7 +10,7 @@ use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Components\Link;
 use Mesour\DataGrid\Components\Button;
 use Nette\Application\UI\Form;
-
+use Tracy\Debugger;
 
 
 class GeneralPresenter extends DefaultAdminPresenter
@@ -38,14 +38,18 @@ class GeneralPresenter extends DefaultAdminPresenter
     );
 
     /** @var string Sblona pro editovani */
-    protected $templateForEdit  = __DIR__ . '/templates/general/editItem.latte';
+    protected $templateForEdit;
 
     /** @var string Sblona pro pridani noveho */
-    protected $templateForAdd   = __DIR__ . '/templates/general/addItem.latte';
+    protected $templateForAdd;
 
 
 
-
+    public function __construct()
+    {
+        $this->templateForAdd = __DIR__.'/templates/general/addItem.latte';
+        $this->templateForEdit = "".__DIR__."/templates/general/editItem.latte";
+    }
 
 
     /**
@@ -123,6 +127,13 @@ class GeneralPresenter extends DefaultAdminPresenter
         $this->template->buttonBack = $buttonBack;
     }
 
+
+    public function beforeRenderSelect()
+    {
+        die();
+        $this->setLayout(__DIR__ . '/templates/selectItemLayout.latte');
+    }
+
     /**
      * Render pro selektovani itemu
      *
@@ -135,16 +146,19 @@ class GeneralPresenter extends DefaultAdminPresenter
             // Vlozime promenout a pak v js hlidame aby neselectoval vice nez jeden
             // Pouze pokud je tahle promenna definovana
             echo "<script type='text/javascript'>var canSelectMoreTrue = true;</script>";
+            $this->showPocetSelected = true;
         } else {
             echo "<script type='text/javascript'>var canSelectMoreTrue = false;</script>";
+            $this->showPocetSelected = false;
         }
 
         /** @var Nette\Bridges\ApplicationLatte\Template $template */
         $template = $this->template;
         $template->setFile(__DIR__ . '/templates/general/selectItem.latte');
 
-        $this->template->site = $this->site;
-        $this->template->nadpis = $this->nadpisy["select"];
+        $this->template->site       = $this->site;
+        $this->template->nadpis     = $this->nadpisy["select"];
+        $this->template->showNumbers = ($this->showPocetSelected)? 'true':'false';
     }
 
 
@@ -155,6 +169,9 @@ class GeneralPresenter extends DefaultAdminPresenter
      * @param $array - pole vsech vyselectovanych itemu  (format:  id:pocet,id:pocet)
      */
     public function renderSelecteditems($show, $showPocet) {
+
+
+        Debugger::$bar = FALSE;
 
         $this->processSelectedItems($show); // ziskani id a poctu ze stringu
 
@@ -173,6 +190,7 @@ class GeneralPresenter extends DefaultAdminPresenter
         /** @var Nette\Bridges\ApplicationLatte\Template $template */
         $template = $this->template;
         $template->setFile(__DIR__ . '/templates/general/selectedItems.latte');
+        $this->template->showNumbers = ($this->showPocetSelected)? 'true':'false';
     }
 
 
@@ -256,7 +274,10 @@ class GeneralPresenter extends DefaultAdminPresenter
                 $parts = explode(':', $item);
                 if (count($parts) > 0) {
                     $id = $parts[0];
-                    $pocet = $parts[1];
+                    $pocet = 1;
+                    if (count($parts) > 1) {
+                        $pocet = $parts[1];
+                    }
                     $this->selectedItems[] = array($id, $pocet);
                 }
                 else {
@@ -293,6 +314,7 @@ class GeneralPresenter extends DefaultAdminPresenter
 
     protected function createComponentSelectedItemsDatagrid($name)
     {
+
         $grid = $this->createDataGrid($name); // vytvoreni
 
         $grid = $this->addColumnsToGrid($grid); // pridani sloupecku
@@ -302,7 +324,7 @@ class GeneralPresenter extends DefaultAdminPresenter
             $grid->addTemplate('pocet', 'Počet')
                 ->setTemplate(__DIR__ . '/templates/Column/_number.latte')
                 ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
-                    $template->value = $this->getPocetForId($this->modelManager->getPkColumn());
+                    $template->value = $this->getPocetForId($data[$this->modelManager->getPkColumn()]);
                 });
         }
         return $grid;
@@ -436,12 +458,14 @@ class GeneralPresenter extends DefaultAdminPresenter
 
         $grid = $this->addColumnsToGrid($grid); // pridani sloupecku
 
-        // pridani selectu postu itemu
-        $grid->addTemplate('pocet', 'Počet')
-            ->setTemplate(__DIR__ . '/templates/Column/_numberOfItems.latte')
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
-                $template->id = $data[$this->modelManager->getPkColumn()];
-            });
+        if ($this->showPocetSelected) {
+            // pridani selectu postu itemu
+            $grid->addTemplate('pocet', 'Počet')
+                ->setTemplate(__DIR__ . '/templates/Column/_numberOfItems.latte')
+                ->setCallback(function ($data, Nette\Application\UI\ITemplate $template) {
+                    $template->id = $data[$this->modelManager->getPkColumn()];
+                });
+        }
 
         return $grid;
     }

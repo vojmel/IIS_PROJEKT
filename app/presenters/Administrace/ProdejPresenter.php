@@ -15,6 +15,8 @@ class ProdejPresenter extends GeneralPresenter
 
     public function __construct(ProdejManager $prodejManager)
     {
+        parent::__construct();
+
         $this->modelManager = $prodejManager;
 
         $this->site = 'prodej';

@@ -15,6 +15,8 @@ class PojistovnaPresenter extends GeneralPresenter
 
     public function __construct(PojistovnaManager $pojistovnaManager)
     {
+        parent::__construct();
+
         $this->modelManager = $pojistovnaManager;
 
         $this->site = 'pojistovna';

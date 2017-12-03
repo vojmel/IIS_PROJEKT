@@ -15,6 +15,8 @@ class PredpisPresenter extends GeneralPresenter
 
     public function __construct(PredpisManager $predpisManager)
     {
+        parent::__construct();
+
         $this->modelManager = $predpisManager;
 
         $this->site = 'predpis';

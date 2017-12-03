@@ -2,6 +2,9 @@
 Vybirani itemu
 *}
 {block content}
+<script type="text/javascript">
+    $( "#menu" ).hide();
+</script>
 <h1 n:block="title">{$nadpis}</h1>
-<button onclick="sendDataToParent({$site})">Vybrat</button>
+<button onclick="sendDataToParent({$site}, {$showNumbers})">Vybrat</button>
 {control selectDatagrid}

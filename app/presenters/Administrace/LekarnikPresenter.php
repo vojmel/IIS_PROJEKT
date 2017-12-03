@@ -15,6 +15,8 @@ class LekarnikPresenter extends GeneralPresenter
 
     public function __construct(LekarnikManager $predpisManager)
     {
+        parent::__construct();
+
         $this->modelManager = $predpisManager;
 
         $this->site = 'lekarnik';
