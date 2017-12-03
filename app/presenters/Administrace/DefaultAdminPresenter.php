@@ -21,16 +21,27 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
 
     public function beforeRender()
     {
-        // Je prihlasen?
-        if ( ! $this->getUser()->isLoggedIn()) {
-            $this->flashMessage('Pro přístup do této sekce, musíš být přihlášený.', 'warning');
-            $this->redirect('Sign:in');
+
+        $skip = true;
+        $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        if (strpos($actual_link, 'register') !== false) {
+            $skip = false;
         }
 
-        // Je to admin?
-        if ($this->getUser()->getIdentity()->roleID != 1) {
-            $this->flashMessage('Pro přístup do této sekce, musíš být administrator..', 'warning');
-            $this->redirect('Sign:in');
+        if ($skip) {
+
+            // Je prihlasen?
+            if ( ! $this->getUser()->isLoggedIn()) {
+                $this->flashMessage('Pro přístup do této sekce, musíš být přihlášený.', 'warning');
+                $this->redirect('Sign:in');
+            }
+
+
+            // Je to admin?
+            if ($this->getUser()->getIdentity()->roleID != 1) {
+                $this->flashMessage('Pro přístup do této sekce, musíš být administrator..', 'warning');
+                $this->redirect('Sign:in');
+            }
         }
 
         parent::beforeRender(); // nezapomeňte volat metodu předka, stejně jako u startup()
