@@ -22,6 +22,8 @@ class DodavatelPresenter extends GeneralPresenter
 
     public function __construct(DodavatelManager $dodavatelManager)
     {
+        parent::__construct();
+
         $this->modelManager = $dodavatelManager;
 
         $this->site = 'dodavatel';

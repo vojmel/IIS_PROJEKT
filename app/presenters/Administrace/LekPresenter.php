@@ -15,6 +15,8 @@ class LekPresenter extends GeneralPresenter
 
     public function __construct(LekManager $lekManager)
     {
+        parent::__construct();
+
         $this->modelManager = $lekManager;
 
         $this->site = 'lek';

@@ -15,6 +15,8 @@ class PobockaPresenter extends GeneralPresenter
 
     public function __construct(PobockaManager $pobockaManager)
     {
+        parent::__construct();
+
         $this->modelManager = $pobockaManager;
 
         $this->site = 'lek';

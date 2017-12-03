@@ -12,8 +12,12 @@ list($_b, $_g, $_l) = $template->initialize('6f92dd41b9', 'html')
 // block content
 //
 if (!function_exists($_b->blocks['content'][] = '_lbae395b83fb_content')) { function _lbae395b83fb_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-;call_user_func(reset($_b->blocks['title']), $_b, get_defined_vars())  ?>
-<button onclick="sendDataToParent(<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($site), ENT_COMPAT) ?>)">Vybrat</button>
+?><script type="text/javascript">
+    $( "#menu" ).hide();
+</script>
+<?php call_user_func(reset($_b->blocks['title']), $_b, get_defined_vars())  ?>
+<button onclick="sendDataToParent(<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($site), ENT_COMPAT) ?>
+, <?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::escapeJs($showNumbers), ENT_COMPAT) ?>)">Vybrat</button>
 <?php $_l->tmp = $_control->getComponent("selectDatagrid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ;
 }}
 

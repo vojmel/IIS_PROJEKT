@@ -15,7 +15,15 @@ if (@!include __DIR__ . '/../nette/loader.php') {
 $configurator = new Nette\Configurator;
 
 // Enable Nette Debugger for error visualisation & logging
-$configurator->setDebugMode(TRUE);
+
+$configurator->setDebugMode(true);
+
+// if selectuji itemy tak nechci nikdy tracy
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+if (strpos($actual_link, 'selecteditems') !== false) {
+    $configurator->setDebugMode(false);
+}
+
 $configurator->enableDebugger(__DIR__ . '/../log');
 
 // Enable RobotLoader - this will load all classes automatically
@@ -37,8 +45,9 @@ $router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
 $container->addService('router', $router);
 
 
-Nette\Object::extensionMethod('Nette\Forms\Container::addSelectItem', function($form, $name, $label = NULL, $from, $selectOne = false){
-    $form[$name] = new \SelectItemControl($name, $label, $from, $selectOne);
+Nette\Object::extensionMethod('Nette\Forms\Container::addSelectItem', function($form, $name, $label = NULL, $from){
+    $form[$name] = new \SelectItemControl($name, $label, $from);
+    return $form[$name];
 });
 
 return $container;

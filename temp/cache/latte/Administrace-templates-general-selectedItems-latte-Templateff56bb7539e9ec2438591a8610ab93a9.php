@@ -12,7 +12,10 @@ list($_b, $_g, $_l) = $template->initialize('b72651d70e', 'html')
 // block content
 //
 if (!function_exists($_b->blocks['content'][] = '_lbe3bda8d374_content')) { function _lbe3bda8d374_content($_b, $_args) { foreach ($_args as $__k => $__v) $$__k = $__v
-;$_l->tmp = $_control->getComponent("selectedItemsDatagrid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ;
+?>    <div id="selectedItems">
+<?php $_l->tmp = $_control->getComponent("selectedItemsDatagrid"); if ($_l->tmp instanceof Nette\Application\UI\IRenderable) $_l->tmp->redrawControl(NULL, FALSE); $_l->tmp->render() ?>
+    </div>
+<?php
 }}
 
 //

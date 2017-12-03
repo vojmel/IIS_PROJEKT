@@ -56,15 +56,25 @@ ob_start(function () {}); call_user_func(reset($_b->blocks['title']), $_b, get_d
 	<!-- Bootstrap + theme-->
 	<link rel="stylesheet" href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/css/bootstrap-theme.min.css">
+
+
+	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/netteForms.js"></script>
+	<script type="text/javascript">
+        function getBasePath() {
+            return <?php echo Latte\Runtime\Filters::escapeJs($basePath) ?>;
+        }
+	</script>
+	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/main.js"></script>
+
 </head>
 
 <body>
-<?php $iterations = 0; foreach ($flashes as $flash) { ?>	<div class="alert alert-dismissable alert-<?php echo Latte\Runtime\Filters::escapeHtml($flash->type, ENT_COMPAT) ?>
+<?php $iterations = 0; foreach ($flashes as $flash) { ?>	<div id="falshMessage" class="alert alert-dismissable alert-<?php echo Latte\Runtime\Filters::escapeHtml($flash->type, ENT_COMPAT) ?>
  fade in" style="position: absolute; z-index: 1000; width: 100%;"><strong><?php echo Latte\Runtime\Filters::escapeHtml($flash->type, ENT_NOQUOTES) ?>
 </strong> <?php echo Latte\Runtime\Filters::escapeHtml($flash->message, ENT_NOQUOTES) ?></div>
 <?php $iterations++; } ?>
 
-	<nav class="navbar navbar-light" style="background-color: #e6eaf2;">
+	<nav class="navbar navbar-light" id="menu" style="background-color: #e6eaf2;">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="<?php echo Latte\Runtime\Filters::escapeHtml($_control->link("Homepage:default"), ENT_COMPAT) ?>
@@ -84,13 +94,6 @@ ob_start(function () {}); call_user_func(reset($_b->blocks['title']), $_b, get_d
 <?php Latte\Macros\BlockMacrosRuntime::callBlock($_b, 'content', $template->getParameters()) ?>
 	</div>
 
-	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/netteForms.js"></script>
-	<script type="text/javascript">
-		function getBasePath() {
-			return <?php echo Latte\Runtime\Filters::escapeJs($basePath) ?>;
-        }
-	</script>
-	<script src="<?php echo Latte\Runtime\Filters::escapeHtml(Latte\Runtime\Filters::safeUrl($basePath), ENT_COMPAT) ?>/js/main.js"></script>
 </body>
 </html>
 <?php
