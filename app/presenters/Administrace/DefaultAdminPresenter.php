@@ -39,8 +39,8 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
             'Dodavatelé' => 'Dodavatel:',
             'Lékárníci' => 'Lekarnik:',
             'Pobočky' => 'Pobocka:',
-            'Pojišťovna' => 'Pojistovna:',
-            'ProdejLeku' => 'ProdejLeku:',
+            'Pojišťovny' => 'Pojistovna:',
+            'Prodeje' => 'Prodej:',
             'Sortiment' => 'Sortiment:',
             'Rezervace' => 'Rezervace:',
             'Předpisy' => 'Predpis:',
@@ -48,20 +48,11 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
             'Uskladnění' => 'Uskladnen:',
             'Správa uživatelů' => 'Uzivatel:',
             'Správa rolí' => 'Role:',
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
->>>>>>> master
             'Seznamy položek' => 'Seznampolozek:',
             'Předpis na' => 'Predpisna:',
             'Objednávka' => 'Objednavka:',
             'Obsah Objednavky' => 'Objednavkaobsahuje:',
             'Obsahuje' => 'Obsahuje:',
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         );
 
 

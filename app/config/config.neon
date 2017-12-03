@@ -10,17 +10,6 @@ application:
 		*: App\*Module\Presenters\*Presenter
 
 services:
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    - App\Model\ObjednavkaobsahujeManager
-=======
->>>>>>> Stashed changes
-=======
-	- App\Model\ObjednavkaobsahujeManager
->>>>>>> master
-=======
->>>>>>> Stashed changes
     - App\Model\LekManager
     - App\Model\RoleManager
     - App\Model\DodavatelManager
@@ -34,19 +23,9 @@ services:
     - App\Model\DoplatekManager
     - App\Model\UskladnenManager
     - App\Model\UzivatelManager
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    - App\Model\ObjednavkaManager
     - App\Model\ObsahujeManager
-=======
->>>>>>> Stashed changes
+    - App\Model\ObjednavkaManager
+    - App\Model\PredpisnaManager
+    - App\Model\SeznampolozekManager
+    - App\Model\ObjednavkaobsahujeManager
     authenticator: App\Model\Authenticator
-=======
-    authenticator: App\Model\Authenticator
-	- App\Model\ObjednavkaManager
-	- App\Model\ObsahujeManager
->>>>>>> master
-=======
-    authenticator: App\Model\Authenticator
->>>>>>> Stashed changes
