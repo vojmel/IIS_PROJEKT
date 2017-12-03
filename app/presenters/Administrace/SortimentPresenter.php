@@ -51,6 +51,16 @@ class SortimentPresenter extends GeneralPresenter
     {
         $grid->addNumber('sortimentID', 'Id sortimentu');
 
+        $grid->addNumber('lekID', 'Id léku');
+
+        $grid->addTemplate('lekID', 'Lék nazev')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, SortimentPresenter $presenter) {
+                $template->id = $data['lekID'];
+                $template->nazev = $presenter->lekManager->getName($data['lekID']);
+            });
+
         $grid->addNumber('dodavatelID', 'Id dodavatele');
 
         $grid->addTemplate('dodavatelID', 'Dodavatel')
@@ -61,15 +71,7 @@ class SortimentPresenter extends GeneralPresenter
                 $template->nazev = $presenter->dodavatelManager->getName($data['dodavatelID']);
             });
 
-        $grid->addNumber('lekID', 'Id léku');
 
-        $grid->addTemplate('lekID', 'Lék nazev')
-            ->setCallbackArguments(array($this))
-            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
-            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, SortimentPresenter $presenter) {
-                $template->id = $data['lekID'];
-                $template->nazev = $presenter->lekManager->getName($data['lekID']);
-            });
 
 
         $grid->addNumber('cena', 'Cena')
@@ -93,6 +95,22 @@ class SortimentPresenter extends GeneralPresenter
      */
     protected function defineInputsForForm($form)
     {
+        $form->addSelectItem('lekID', 'Lék: ', 'lek')
+            ->setSearchOne(true)
+            ->setRequired('Field "Lék" is required.')
+            ->setButtonLabel("Vybrat Lék");
+
+        $form->addSelectItem('dodavatelID', 'Dodavatel: ', 'dodavatel')
+            ->setSearchOne(true)
+            ->setRequired('Field "Dodavatel" is required.')
+            ->setButtonLabel("Vybrat dodavatele");
+
+        $form->addText('cena', 'Cena:', 38)
+            ->setHtmlType('number')
+            ->setRequired(true);
+
+
+
         return $form;
     }
 

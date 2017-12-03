@@ -105,15 +105,15 @@ class RezervacePresenter extends GeneralPresenter
             ->setRequired(false)
             ->addRule($form::PATTERN, "Datum musí být ve formátu dd.mm.rrrr", "(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d");
 
-        // dlouhe cislo
-        $form->addText('pobockaID', 'Pobočka')
-            ->setHtmlType('number')
-            ->setRequired(true);
+        $form->addSelectItem('lekarnikID', 'Lékárník: ', 'lekarnik')
+            ->setSearchOne(true)
+            ->setRequired('Field "Lékárník" is required.')
+            ->setButtonLabel("Vybrat Lékárníka");
 
-        // dlouhe cislo
-        $form->addText('lekarnikID', 'Lékárník')
-            ->setHtmlType('number')
-            ->setRequired(true);
+        $form->addSelectItem('pobockaID', 'Pobočka: ', 'pobocka')
+            ->setSearchOne(true)
+            ->setRequired('Field "Pobočka" is required.')
+            ->setButtonLabel("Vybrat pobočku");
 
         // Check box
         $form->addCheckbox('vyzvednuto', 'Vyzvednuto: ');

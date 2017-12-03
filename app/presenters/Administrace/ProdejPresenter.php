@@ -90,17 +90,23 @@ class ProdejPresenter extends GeneralPresenter
     protected function defineInputsForForm($form)
     {
         // Datum
-        $form->addText("datumExpirace", "Datum expirace: ")
+        $form->addText("datum", "Datum: ")
             ->setAttribute("placeholder", "dd.mm.rrrr")
             ->setRequired(true)
             ->addRule($form::PATTERN, "Datum musí být ve formátu dd.mm.rrrr", "(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d");
 
-        ///TODO LIST POBOCEK
+        $form->addSelectItem('lekarnikID', 'Lékárník: ', 'lekarnik')
+            ->setSearchOne(true)
+            ->setRequired('Field "Lékárník" is required.')
+            ->setButtonLabel("Vybrat Lékárníka");
+
+        $form->addSelectItem('pobockaID', 'Pobočka: ', 'pobocka')
+            ->setSearchOne(true)
+            ->setRequired('Field "Pobočka" is required.')
+            ->setButtonLabel("Vybrat pobočku");
 
 
-        ///TODO LIST ZAMESTNANCU KDO PRODEJ USKUTECNIL
 
-        ///TODO automaticky vytvaret datum  prodeje
 
 
         return $form;
@@ -114,7 +120,7 @@ class ProdejPresenter extends GeneralPresenter
      */
     protected function changeValuesBeforeEdit($values)
     {
-        $values['datumExpirace'] = date('d.m.Y', $values['datumExpirace']->getTimestamp());
+        $values['datum'] = date('d.m.Y', $values['datum']->getTimestamp());
 
         return $values;
     }
@@ -128,7 +134,7 @@ class ProdejPresenter extends GeneralPresenter
     protected function changeValuesAfterEdit($data)
     {
         // oprava datumu pro zapis do db
-        $data["datumExpirace"] = Nette\DateTime::from($data["datumExpirace"]);
+        $data["datum"] = Nette\DateTime::from($data["datum"]);
         return $data;
     }
 }
