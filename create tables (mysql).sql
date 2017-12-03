@@ -569,5 +569,12 @@ Insert into uskladnen
    (MNOZSTVI, pobockaID, lekID)
  Values
    (23, 2, 23);
-COMMIT;
 
+ALTER TABLE uskladnen ADD uskladnenID INT PRIMARY KEY AUTO_INCREMENT;
+ALTER TABLE sortiment ADD sortimentID INT PRIMARY KEY AUTO_INCREMENT;
+ALTER TABLE seznampolozek ADD seznampolozek INT PRIMARY KEY AUTO_INCREMENT;
+ALTER TABLE predpisna ADD predpisnaID INT PRIMARY KEY AUTO_INCREMENT;
+ALTER TABLE obsahuje ADD obsahujeID INT PRIMARY KEY AUTO_INCREMENT;
+ALTER TABLE objednavkaobsahuje ADD objednavkaobsahujeID INT PRIMARY KEY AUTO_INCREMENT;
+
+COMMIT;
