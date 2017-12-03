@@ -343,8 +343,12 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   <component name="ProjectFrameBounds">
 <<<<<<< Updated upstream
+=======
+  <component name="ProjectFrameBounds" extendedState="1">
+>>>>>>> Stashed changes
 =======
   <component name="ProjectFrameBounds" extendedState="1">
 >>>>>>> Stashed changes
@@ -496,6 +500,7 @@
 <<<<<<< Updated upstream
       <workItem from="1512149508761" duration="52531000" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
       <workItem from="1512254211340" duration="3014000" />
 =======
@@ -504,6 +509,9 @@
 =======
       <workItem from="1512254211340" duration="7239000" />
 >>>>>>> master
+=======
+      <workItem from="1512254211340" duration="7471000" />
+>>>>>>> Stashed changes
 =======
       <workItem from="1512254211340" duration="7471000" />
 >>>>>>> Stashed changes
@@ -520,12 +528,16 @@
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="69894000" />
 =======
     <option name="totallyTimeSpent" value="74119000" />
 >>>>>>> master
+=======
+    <option name="totallyTimeSpent" value="74351000" />
+>>>>>>> Stashed changes
 =======
     <option name="totallyTimeSpent" value="74351000" />
 >>>>>>> Stashed changes
