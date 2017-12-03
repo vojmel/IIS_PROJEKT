@@ -28,7 +28,7 @@ class SortimentPresenter extends GeneralPresenter
 
         $this->site = 'sortiment';
         $this->nadpisy = array(
-            "default"   => 'sortimenty',
+            "default"   => 'Sortimenty dodavatelů',
             "edit"      => 'Editace sortimentu: ', // + id editovaneho
             "add"       => 'Přidání sortimentu:',
             "select"    => 'Vybrat sortiment: ',

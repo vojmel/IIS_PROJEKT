@@ -28,7 +28,7 @@ class ObjednavkaPresenter extends GeneralPresenter
 
         $this->site = 'objednavka';
         $this->nadpisy = array(
-            "default"   => 'Obsahy zadaných objednávek',
+            "default"   => 'Objednávky léků',
             "edit"      => 'Editace obsahu objednávky: ', // + id editovaneho
             "add"       => 'Přidání obsahu objednávky:',
             "select"    => 'Vybrat obsahu objednávky: ',

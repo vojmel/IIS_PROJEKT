@@ -27,7 +27,7 @@ class RezervacePresenter extends GeneralPresenter
 
         $this->site = 'rezervace';
         $this->nadpisy = array(
-            "default"   => 'Rezervace',
+            "default"   => 'Rezervace léků',
             "edit"      => 'Editace rezervace: ', // + id editovaneho
             "add"       => 'Přidání rezervace:',
             "select"    => 'Vybrat rezervaci: ',
@@ -50,7 +50,7 @@ class RezervacePresenter extends GeneralPresenter
     {
         $grid->addNumber('rezervaceID', 'Id');
 
-        $grid->addText('jmenoZakaznika', 'Jméno Zakaznika');
+        $grid->addText('jmenoZakaznika', 'Jméno zakaznika');
 
         $grid->addDate('datumExpirace', 'Datum expirace')
             ->setFormat('j.n.Y H:i:s');

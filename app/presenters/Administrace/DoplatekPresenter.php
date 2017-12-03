@@ -28,7 +28,7 @@ class DoplatekPresenter extends GeneralPresenter
 
         $this->site = 'doplatek';
         $this->nadpisy = array(
-            "default"   => 'Doplatek',
+            "default"   => 'Doplatky na leky',
             "edit"      => 'Editace doplatku: ', // + id editovaneho
             "add"       => 'Přidání doplatku:',
             "select"    => 'Vybrat doplatek: ',
@@ -51,12 +51,12 @@ class DoplatekPresenter extends GeneralPresenter
     {
         $grid->addNumber('doplatekID', 'Id');
 
-        $grid->addNumber('pojistovnaID', 'Pojišťovna Id');
+        $grid->addNumber('pojistovnaID', 'Id pojišťovny');
 
 
-        $grid->addNumber('lekID', 'Lék Id');
+        $grid->addNumber('lekID', 'Id léku');
 
-        $grid->addTemplate('lekID', 'Lék nazev')
+        $grid->addTemplate('lekID', 'Název léku')
             ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
             ->setCallback(function($data, Nette\Application\UI\ITemplate $template, DoplatekPresenter $presenter) {
@@ -64,7 +64,7 @@ class DoplatekPresenter extends GeneralPresenter
                 $template->nazev = $presenter->lekManager->getName($data['lekID']);
             });
 
-        $grid->addTemplate('pojistovnaID', 'Pojišťovna nazev')
+        $grid->addTemplate('pojistovnaID', 'Název pojišťovny')
             ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
             ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {

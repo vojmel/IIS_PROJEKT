@@ -29,7 +29,7 @@ class ObsahujePresenter extends GeneralPresenter
 
         $this->site = 'obsahuje';
         $this->nadpisy = array(
-            "default"   => 'Obsahuje',
+            "default"   => 'Obsahy rezervací',
             "edit"      => 'Editace objednavka Obsahuje: ', // + id editovaneho
             "add"       => 'Přidání Predpisu na lék:',
             "select"    => 'Vybrat Predpisu na lék: ',

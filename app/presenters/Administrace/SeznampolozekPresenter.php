@@ -30,7 +30,7 @@ class SeznampolozekPresenter extends GeneralPresenter
 
         $this->site = 'seznampolozek';
         $this->nadpisy = array(
-            "default"   => 'Seznamy položek',
+            "default"   => 'Položky prodeje',
             "edit"      => 'Editace seznamu položek: ', // + id editovaneho
             "add"       => 'Přidání seznamu položek:',
             "select"    => 'Vybrat seznam položek: ',

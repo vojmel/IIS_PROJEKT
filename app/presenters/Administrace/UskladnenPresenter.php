@@ -27,7 +27,7 @@ class UskladnenPresenter extends GeneralPresenter
 
         $this->site = 'uskladnen';
         $this->nadpisy = array(
-            "default"   => 'Uskladněné',
+            "default"   => 'Uskladněné léky',
             "edit"      => 'Editace uskladnění: ', // + id editovaneho
             "add"       => 'Přidání uskladnění:',
             "select"    => 'Vybrat uskladnění: ',
@@ -52,7 +52,7 @@ class UskladnenPresenter extends GeneralPresenter
 
         $grid->addNumber('lekID', 'Id léku');
 
-        $grid->addTemplate('lekID', 'Lék nazev')
+        $grid->addTemplate('lekID', 'Název léku')
             ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
             ->setCallback(function($data, Nette\Application\UI\ITemplate $template, UskladnenPresenter $presenter) {

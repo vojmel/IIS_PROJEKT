@@ -24,7 +24,7 @@ class PredpisPresenter extends GeneralPresenter
 
         $this->site = 'predpis';
         $this->nadpisy = array(
-            "default"   => 'Předpisy',
+            "default"   => 'Předpisy léků',
             "edit"      => 'Editace předpisu: ', // + id editovaneho
             "add"       => 'Přidání předpisu:',
             "select"    => 'Vybrat předpis: ',
