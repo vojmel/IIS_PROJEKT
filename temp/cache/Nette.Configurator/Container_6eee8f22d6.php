@@ -34,6 +34,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.12',
 					'application.13',
 					'application.14',
+					'application.15',
 					'container',
 				),
 			),
@@ -88,12 +89,13 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'27_App_Model_DoplatekManager',
 					'28_App_Model_LekManager',
 					'29_App_Model_LekarnikManager',
-					'30_App_Model_PobockaManager',
-					'31_App_Model_PojistovnaManager',
-					'32_App_Model_PredpisManager',
-					'33_App_Model_ProdejManager',
-					'34_App_Model_RezervaceManager',
-					'35_App_Model_SortimentManager',
+					'30_App_Model_ObjednavkaManager',
+					'31_App_Model_PobockaManager',
+					'32_App_Model_PojistovnaManager',
+					'33_App_Model_PredpisManager',
+					'34_App_Model_ProdejManager',
+					'35_App_Model_RezervaceManager',
+					'36_App_Model_SortimentManager',
 				),
 			),
 			'App\Model\DodavatelManager' => array(
@@ -106,23 +108,26 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 			'App\Model\LekarnikManager' => array(
 				1 => array('29_App_Model_LekarnikManager'),
 			),
+			'App\Model\ObjednavkaManager' => array(
+				1 => array('30_App_Model_ObjednavkaManager'),
+			),
 			'App\Model\PobockaManager' => array(
-				1 => array('30_App_Model_PobockaManager'),
+				1 => array('31_App_Model_PobockaManager'),
 			),
 			'App\Model\PojistovnaManager' => array(
-				1 => array('31_App_Model_PojistovnaManager'),
+				1 => array('32_App_Model_PojistovnaManager'),
 			),
 			'App\Model\PredpisManager' => array(
-				1 => array('32_App_Model_PredpisManager'),
+				1 => array('33_App_Model_PredpisManager'),
 			),
 			'App\Model\ProdejManager' => array(
-				1 => array('33_App_Model_ProdejManager'),
+				1 => array('34_App_Model_ProdejManager'),
 			),
 			'App\Model\RezervaceManager' => array(
-				1 => array('34_App_Model_RezervaceManager'),
+				1 => array('35_App_Model_RezervaceManager'),
 			),
 			'App\Model\SortimentManager' => array(
-				1 => array('35_App_Model_SortimentManager'),
+				1 => array('36_App_Model_SortimentManager'),
 			),
 			'App\Presenters\GeneralPresenter' => array(
 				array(
@@ -137,6 +142,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'App\Presenters\DefaultAdminPresenter' => array(
@@ -153,6 +159,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\Application\UI\Presenter' => array(
@@ -169,6 +176,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\Application\UI\Control' => array(
@@ -185,6 +193,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\Application\UI\PresenterComponent' => array(
@@ -201,6 +210,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\ComponentModel\Container' => array(
@@ -217,6 +227,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\ComponentModel\Component' => array(
@@ -233,6 +244,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\Application\IPresenter' => array(
@@ -251,6 +263,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.12',
 					'application.13',
 					'application.14',
+					'application.15',
 				),
 			),
 			'ArrayAccess' => array(
@@ -267,6 +280,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\Application\UI\IStatePersistent' => array(
@@ -283,6 +297,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\Application\UI\ISignalReceiver' => array(
@@ -299,6 +314,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\ComponentModel\IComponent' => array(
@@ -315,6 +331,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\ComponentModel\IContainer' => array(
@@ -331,6 +348,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'Nette\Application\UI\IRenderable' => array(
@@ -347,6 +365,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 					'application.10',
 					'application.11',
 					'application.12',
+					'application.13',
 				),
 			),
 			'App\Presenters\DodavatelPresenter' => array(array('application.1')),
@@ -354,14 +373,15 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 			'App\Presenters\HomepagePresenter' => array(array('application.4')),
 			'App\Presenters\LekarnikPresenter' => array(array('application.5')),
 			'App\Presenters\LekPresenter' => array(array('application.6')),
-			'App\Presenters\PobockaPresenter' => array(array('application.7')),
-			'App\Presenters\PojistovnaPresenter' => array(array('application.8')),
-			'App\Presenters\PredpisPresenter' => array(array('application.9')),
-			'App\Presenters\ProdejPresenter' => array(array('application.10')),
-			'App\Presenters\RezervacePresenter' => array(array('application.11')),
-			'App\Presenters\SortimentPresenter' => array(array('application.12')),
-			'NetteModule\ErrorPresenter' => array(array('application.13')),
-			'NetteModule\MicroPresenter' => array(array('application.14')),
+			'App\Presenters\ObjednavkaPresenter' => array(array('application.7')),
+			'App\Presenters\PobockaPresenter' => array(array('application.8')),
+			'App\Presenters\PojistovnaPresenter' => array(array('application.9')),
+			'App\Presenters\PredpisPresenter' => array(array('application.10')),
+			'App\Presenters\ProdejPresenter' => array(array('application.11')),
+			'App\Presenters\RezervacePresenter' => array(array('application.12')),
+			'App\Presenters\SortimentPresenter' => array(array('application.13')),
+			'NetteModule\ErrorPresenter' => array(array('application.14')),
+			'NetteModule\MicroPresenter' => array(array('application.15')),
 			'Nette\DI\Container' => array(1 => array('container')),
 		),
 		'services' => array(
@@ -369,26 +389,28 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 			'27_App_Model_DoplatekManager' => 'App\Model\DoplatekManager',
 			'28_App_Model_LekManager' => 'App\Model\LekManager',
 			'29_App_Model_LekarnikManager' => 'App\Model\LekarnikManager',
-			'30_App_Model_PobockaManager' => 'App\Model\PobockaManager',
-			'31_App_Model_PojistovnaManager' => 'App\Model\PojistovnaManager',
-			'32_App_Model_PredpisManager' => 'App\Model\PredpisManager',
-			'33_App_Model_ProdejManager' => 'App\Model\ProdejManager',
-			'34_App_Model_RezervaceManager' => 'App\Model\RezervaceManager',
-			'35_App_Model_SortimentManager' => 'App\Model\SortimentManager',
+			'30_App_Model_ObjednavkaManager' => 'App\Model\ObjednavkaManager',
+			'31_App_Model_PobockaManager' => 'App\Model\PobockaManager',
+			'32_App_Model_PojistovnaManager' => 'App\Model\PojistovnaManager',
+			'33_App_Model_PredpisManager' => 'App\Model\PredpisManager',
+			'34_App_Model_ProdejManager' => 'App\Model\ProdejManager',
+			'35_App_Model_RezervaceManager' => 'App\Model\RezervaceManager',
+			'36_App_Model_SortimentManager' => 'App\Model\SortimentManager',
 			'application.1' => 'App\Presenters\DodavatelPresenter',
-			'application.10' => 'App\Presenters\ProdejPresenter',
-			'application.11' => 'App\Presenters\RezervacePresenter',
-			'application.12' => 'App\Presenters\SortimentPresenter',
-			'application.13' => 'NetteModule\ErrorPresenter',
-			'application.14' => 'NetteModule\MicroPresenter',
+			'application.10' => 'App\Presenters\PredpisPresenter',
+			'application.11' => 'App\Presenters\ProdejPresenter',
+			'application.12' => 'App\Presenters\RezervacePresenter',
+			'application.13' => 'App\Presenters\SortimentPresenter',
+			'application.14' => 'NetteModule\ErrorPresenter',
+			'application.15' => 'NetteModule\MicroPresenter',
 			'application.2' => 'App\Presenters\DoplatekPresenter',
 			'application.3' => 'App\Presenters\GeneralPresenter',
 			'application.4' => 'App\Presenters\HomepagePresenter',
 			'application.5' => 'App\Presenters\LekarnikPresenter',
 			'application.6' => 'App\Presenters\LekPresenter',
-			'application.7' => 'App\Presenters\PobockaPresenter',
-			'application.8' => 'App\Presenters\PojistovnaPresenter',
-			'application.9' => 'App\Presenters\PredpisPresenter',
+			'application.7' => 'App\Presenters\ObjednavkaPresenter',
+			'application.8' => 'App\Presenters\PobockaPresenter',
+			'application.9' => 'App\Presenters\PojistovnaPresenter',
 			'application.application' => 'Nette\Application\Application',
 			'application.linkGenerator' => 'Nette\Application\LinkGenerator',
 			'application.presenterFactory' => 'Nette\Application\IPresenterFactory',
@@ -424,6 +446,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 				'application.12' => TRUE,
 				'application.13' => TRUE,
 				'application.14' => TRUE,
+				'application.15' => TRUE,
 				'application.2' => TRUE,
 				'application.3' => TRUE,
 				'application.4' => TRUE,
@@ -435,19 +458,20 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 			),
 			'nette.presenter' => array(
 				'application.1' => 'App\Presenters\DodavatelPresenter',
-				'application.10' => 'App\Presenters\ProdejPresenter',
-				'application.11' => 'App\Presenters\RezervacePresenter',
-				'application.12' => 'App\Presenters\SortimentPresenter',
-				'application.13' => 'NetteModule\ErrorPresenter',
-				'application.14' => 'NetteModule\MicroPresenter',
+				'application.10' => 'App\Presenters\PredpisPresenter',
+				'application.11' => 'App\Presenters\ProdejPresenter',
+				'application.12' => 'App\Presenters\RezervacePresenter',
+				'application.13' => 'App\Presenters\SortimentPresenter',
+				'application.14' => 'NetteModule\ErrorPresenter',
+				'application.15' => 'NetteModule\MicroPresenter',
 				'application.2' => 'App\Presenters\DoplatekPresenter',
 				'application.3' => 'App\Presenters\GeneralPresenter',
 				'application.4' => 'App\Presenters\HomepagePresenter',
 				'application.5' => 'App\Presenters\LekarnikPresenter',
 				'application.6' => 'App\Presenters\LekPresenter',
-				'application.7' => 'App\Presenters\PobockaPresenter',
-				'application.8' => 'App\Presenters\PojistovnaPresenter',
-				'application.9' => 'App\Presenters\PredpisPresenter',
+				'application.7' => 'App\Presenters\ObjednavkaPresenter',
+				'application.8' => 'App\Presenters\PobockaPresenter',
+				'application.9' => 'App\Presenters\PojistovnaPresenter',
 			),
 		),
 		'aliases' => array(
@@ -529,9 +553,19 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 
 
 	/**
+	 * @return App\Model\ObjednavkaManager
+	 */
+	public function createService__30_App_Model_ObjednavkaManager()
+	{
+		$service = new App\Model\ObjednavkaManager($this->getService('database.default.context'));
+		return $service;
+	}
+
+
+	/**
 	 * @return App\Model\PobockaManager
 	 */
-	public function createService__30_App_Model_PobockaManager()
+	public function createService__31_App_Model_PobockaManager()
 	{
 		$service = new App\Model\PobockaManager($this->getService('database.default.context'));
 		return $service;
@@ -541,7 +575,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return App\Model\PojistovnaManager
 	 */
-	public function createService__31_App_Model_PojistovnaManager()
+	public function createService__32_App_Model_PojistovnaManager()
 	{
 		$service = new App\Model\PojistovnaManager($this->getService('database.default.context'));
 		return $service;
@@ -551,7 +585,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return App\Model\PredpisManager
 	 */
-	public function createService__32_App_Model_PredpisManager()
+	public function createService__33_App_Model_PredpisManager()
 	{
 		$service = new App\Model\PredpisManager($this->getService('database.default.context'));
 		return $service;
@@ -561,7 +595,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return App\Model\ProdejManager
 	 */
-	public function createService__33_App_Model_ProdejManager()
+	public function createService__34_App_Model_ProdejManager()
 	{
 		$service = new App\Model\ProdejManager($this->getService('database.default.context'));
 		return $service;
@@ -571,7 +605,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return App\Model\RezervaceManager
 	 */
-	public function createService__34_App_Model_RezervaceManager()
+	public function createService__35_App_Model_RezervaceManager()
 	{
 		$service = new App\Model\RezervaceManager($this->getService('database.default.context'));
 		return $service;
@@ -581,7 +615,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return App\Model\SortimentManager
 	 */
-	public function createService__35_App_Model_SortimentManager()
+	public function createService__36_App_Model_SortimentManager()
 	{
 		$service = new App\Model\SortimentManager($this->getService('database.default.context'));
 		return $service;
@@ -603,11 +637,25 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 
 
 	/**
-	 * @return App\Presenters\ProdejPresenter
+	 * @return App\Presenters\PredpisPresenter
 	 */
 	public function createServiceApplication__10()
 	{
-		$service = new App\Presenters\ProdejPresenter($this->getService('33_App_Model_ProdejManager'));
+		$service = new App\Presenters\PredpisPresenter($this->getService('33_App_Model_PredpisManager'));
+		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
+			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
+			$this->getService('security.user'), $this->getService('latte.templateFactory'));
+		$service->invalidLinkMode = 5;
+		return $service;
+	}
+
+
+	/**
+	 * @return App\Presenters\ProdejPresenter
+	 */
+	public function createServiceApplication__11()
+	{
+		$service = new App\Presenters\ProdejPresenter($this->getService('34_App_Model_ProdejManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
 			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
@@ -619,9 +667,9 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return App\Presenters\RezervacePresenter
 	 */
-	public function createServiceApplication__11()
+	public function createServiceApplication__12()
 	{
-		$service = new App\Presenters\RezervacePresenter($this->getService('34_App_Model_RezervaceManager'));
+		$service = new App\Presenters\RezervacePresenter($this->getService('35_App_Model_RezervaceManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
 			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
@@ -633,9 +681,9 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return App\Presenters\SortimentPresenter
 	 */
-	public function createServiceApplication__12()
+	public function createServiceApplication__13()
 	{
-		$service = new App\Presenters\SortimentPresenter($this->getService('35_App_Model_SortimentManager'));
+		$service = new App\Presenters\SortimentPresenter($this->getService('36_App_Model_SortimentManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
 			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
@@ -647,7 +695,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return NetteModule\ErrorPresenter
 	 */
-	public function createServiceApplication__13()
+	public function createServiceApplication__14()
 	{
 		$service = new NetteModule\ErrorPresenter($this->getService('tracy.logger'));
 		return $service;
@@ -657,7 +705,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return NetteModule\MicroPresenter
 	 */
-	public function createServiceApplication__14()
+	public function createServiceApplication__15()
 	{
 		$service = new NetteModule\MicroPresenter($this, $this->getService('http.request'), $this->getService('routing.router'));
 		return $service;
@@ -670,7 +718,7 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	public function createServiceApplication__2()
 	{
 		$service = new App\Presenters\DoplatekPresenter($this->getService('27_App_Model_DoplatekManager'), $this->getService('28_App_Model_LekManager'),
-			$this->getService('31_App_Model_PojistovnaManager'));
+			$this->getService('32_App_Model_PojistovnaManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
 			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
@@ -736,11 +784,25 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 
 
 	/**
-	 * @return App\Presenters\PobockaPresenter
+	 * @return App\Presenters\ObjednavkaPresenter
 	 */
 	public function createServiceApplication__7()
 	{
-		$service = new App\Presenters\PobockaPresenter($this->getService('30_App_Model_PobockaManager'));
+		$service = new App\Presenters\ObjednavkaPresenter($this->getService('30_App_Model_ObjednavkaManager'));
+		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
+			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
+			$this->getService('security.user'), $this->getService('latte.templateFactory'));
+		$service->invalidLinkMode = 5;
+		return $service;
+	}
+
+
+	/**
+	 * @return App\Presenters\PobockaPresenter
+	 */
+	public function createServiceApplication__8()
+	{
+		$service = new App\Presenters\PobockaPresenter($this->getService('31_App_Model_PobockaManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
 			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));
@@ -752,23 +814,9 @@ class Container_6eee8f22d6 extends Nette\DI\Container
 	/**
 	 * @return App\Presenters\PojistovnaPresenter
 	 */
-	public function createServiceApplication__8()
-	{
-		$service = new App\Presenters\PojistovnaPresenter($this->getService('31_App_Model_PojistovnaManager'));
-		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
-			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
-			$this->getService('security.user'), $this->getService('latte.templateFactory'));
-		$service->invalidLinkMode = 5;
-		return $service;
-	}
-
-
-	/**
-	 * @return App\Presenters\PredpisPresenter
-	 */
 	public function createServiceApplication__9()
 	{
-		$service = new App\Presenters\PredpisPresenter($this->getService('32_App_Model_PredpisManager'));
+		$service = new App\Presenters\PojistovnaPresenter($this->getService('32_App_Model_PojistovnaManager'));
 		$service->injectPrimary($this, $this->getService('application.presenterFactory'), $this->getService('routing.router'),
 			$this->getService('http.request'), $this->getService('http.response'), $this->getService('session.session'),
 			$this->getService('security.user'), $this->getService('latte.templateFactory'));

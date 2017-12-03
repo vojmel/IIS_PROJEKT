@@ -65,11 +65,14 @@ class LekarnikPresenter extends GeneralPresenter
                 $template->state = $data['stavPracovnbihoPomeru'];
             });
 
+        $grid->addNumber('pobockaID', 'Pobočka id')
+            ->setThousandsSeparator(false);
 
-        $grid->addTemplate('pobockaID', 'Pobočka')
-            ->setTemplate(__DIR__ . '/templates/Column/_pobockaName.latte') // or instanceof UI\ITemplate
+        $grid->addTemplate('pobockaID', 'Pobočka název')
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
             ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
-                $template->pobockaID = $data['pobockaID'];
+                $template->id = $data['pobockaID'];
+                $template->nazev = $data['pobockaID'];
             });
 
 
