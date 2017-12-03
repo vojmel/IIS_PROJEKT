@@ -13,9 +13,9 @@ use Nette\Application\UI\Form;
 class LekarnikPresenter extends GeneralPresenter
 {
 
-    public function __construct(LekarnikManager $lekarnikManager)
+    public function __construct(LekarnikManager $predpisManager)
     {
-        $this->modelManager = $lekarnikManager;
+        $this->modelManager = $predpisManager;
 
         $this->site = 'lekarnik';
         $this->nadpisy = array(

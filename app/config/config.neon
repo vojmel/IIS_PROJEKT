@@ -15,4 +15,8 @@ services:
 	- App\Model\LekarnikManager
 	- App\Model\PobockaManager
 	- App\Model\PojistovnaManager
+	- App\Model\ProdejManager
+	- App\Model\SortimentManager
+	- App\Model\RezervaceManager
+	- App\Model\PredpisManager
 	- App\Model\DoplatekManager
