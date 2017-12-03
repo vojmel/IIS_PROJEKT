@@ -44,7 +44,9 @@ class SortimentPresenter extends GeneralPresenter
     {
         $grid->addNumber('lekID', 'Lék');
         $grid->addNumber('cena', 'Cena');
-        $grid->addNumber('dodatavelID', 'Dodavatel');
+        $grid->addNumber('dodavatelID', 'Dodavatel');
+        $grid->addNumber('sortimentID', 'ID sortimentu');
+
 
         return $grid;
     }

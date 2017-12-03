@@ -9,5 +9,5 @@ namespace App\Model;
 class SortimentManager extends GeneralManager
 {
     protected $tableName = 'sortiment';
-    protected $pkColumn = 'dodavatelID';
+    protected $pkColumn = 'sortimentID';
 }
