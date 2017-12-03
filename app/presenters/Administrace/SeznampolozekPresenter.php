@@ -14,7 +14,7 @@ use Mesour\DataGrid\NetteDbDataSource,
 use Mesour\DataGrid\Components\Button;
 use Nette\Application\UI\Form;
 
-class SeznampolozekPresenter extends GeneralPresenter
+class SeznampolozekPresenter extends GeneralAdminPresenter
 {
 
     public $lekManager;

@@ -9,14 +9,14 @@
 namespace App\Presenters;
 
 use App\Model\DodavatelManager;
-use App\Presenters\GeneralPresenter;
+use App\Presenters\GeneralAdminPresenter;
 use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Grid,
     Mesour\DataGrid\Components\Link;
 use Mesour\DataGrid\Components\Button;
 use Nette\Application\UI\Form;
 
-class DodavatelPresenter extends GeneralPresenter
+class DodavatelPresenter extends GeneralAdminPresenter
 {
 
 

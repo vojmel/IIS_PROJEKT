@@ -17,7 +17,7 @@ use Mesour\DataGrid\NetteDbDataSource,
 use Mesour\DataGrid\Components\Button;
 use Nette\Application\UI\Form;
 
-class RolePresenter  extends GeneralPresenter
+class RolePresenter  extends GeneralAdminPresenter
 {
 
     public function __construct(RoleManager $roleManager)

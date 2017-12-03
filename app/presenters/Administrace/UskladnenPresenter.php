@@ -12,7 +12,7 @@ use Mesour\DataGrid\NetteDbDataSource,
 use Mesour\DataGrid\Components\Button;
 use Nette\Application\UI\Form;
 
-class UskladnenPresenter extends GeneralPresenter
+class UskladnenPresenter extends GeneralAdminPresenter
 {
     public $lekManager;
     public $pobockaManager;

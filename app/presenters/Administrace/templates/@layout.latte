@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta n:ifset="$robots" name="robots" content="{$robots}">
 
-	<title>{block title|striptags|trim}{/block} | Nette example</title>
+	<title>{block title|striptags|trim}{/block} | Správa Lékáren</title>
 
 
 	<!-- jquery + bootstrap.js + jquery-ui -->
@@ -16,6 +16,7 @@
 	<!-- Bootstrap + theme-->
 	<link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{$basePath}/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{$basePath}/css/main.css">
 
 
 	<script src="{$basePath}/js/netteForms.js"></script>
@@ -36,11 +37,6 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" n:href="Administrace:default">Administrace</a>
 			</div>
-			<ul class="nav navbar-nav">
-				{foreach $menuItems as $item => $link}
-					<li {ifCurrent $link}class="active"{/ifCurrent} ><a n:href="$link">{$item}</a></li>
-				{/foreach}
-			</ul>
 			<div style="float:right;">
 				<ul class="nav navbar-nav">
 					<li>
@@ -53,6 +49,88 @@
 								<a href="{plink Sign:in}" class="btn btn-primary">Přihlásit</a>
                             {/if}
 						</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<nav class="navbar navbar-default sidebar" id="menu2" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li >
+						<a href="{plink Lek:}">Léky<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-apple"></span></a>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pobočka<span class="caret"></span>
+							<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>
+						</a>
+						<ul class="dropdown-menu forAnimate" role="menu">
+							<li><a href="{plink Pobocka:}">Pobočky</a></li>
+							<li><a href="{plink Uskladnen:}">Na skladě</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dodavatel<span class="caret"></span>
+							<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-briefcase"></span>
+						</a>
+						<ul class="dropdown-menu forAnimate" role="menu">
+							<li><a href="{plink Dodavatel:}">Dodavatelé</a></li>
+							<li><a href="{plink Sortiment:}">Sortiment</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Objednávka<span class="caret"></span>
+							<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-shopping-cart"></span>
+						</a>
+						<ul class="dropdown-menu forAnimate" role="menu">
+							<li><a href="{plink Objednavka:}">Objednávky</a></li>
+							<li><a href="{plink Objednavkaobsahuje:}">Položky</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pojišťovna<span class="caret"></span>
+							<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tent"></span>
+						</a>
+						<ul class="dropdown-menu forAnimate" role="menu">
+							<li><a href="{plink Pojistovna:}">Pojišťovny</a></li>
+							<li><a href="{plink Doplatek:}">Doplatky na léky</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Prodej<span class="caret"></span>
+							<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tent"></span>
+						</a>
+						<ul class="dropdown-menu forAnimate" role="menu">
+							<li><a href="{plink Prodej:}">Prodej</a></li>
+							<li><a href="{plink Seznampolozek:}">Prodej položky</a></li>
+							<li class="divider"></li>
+							<li><a href="{plink Predpis:}">Předpisy</a></li>
+							<li><a href="{plink Predpisna:}">Předpis položky</a></li>
+							<li class="divider"></li>
+							<li><a href="{plink Rezervace:}">Rezervace</a></li>
+							<li><a href="{plink Obsahuje:}">Rezervace položky</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Správa uživatelů<span class="caret"></span>
+							<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span>
+						</a>
+						<ul class="dropdown-menu forAnimate" role="menu">
+							<li><a href="{plink Uzivatel:}">Uživatel</a></li>
+							<li><a href="{plink Role:}">Role</a></li>
+							<li><a href="{plink Lekarnik:}">Lékárník</a></li>
+						</ul>
 					</li>
 				</ul>
 			</div>

@@ -10,7 +10,7 @@ use Mesour\DataGrid\NetteDbDataSource,
 use Mesour\DataGrid\Components\Button;
 use Nette\Application\UI\Form;
 
-class PobockaPresenter extends GeneralPresenter
+class PobockaPresenter extends GeneralAdminPresenter
 {
 
     public function __construct(PobockaManager $pobockaManager)

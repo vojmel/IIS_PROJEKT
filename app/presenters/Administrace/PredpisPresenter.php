@@ -11,7 +11,7 @@ use Mesour\DataGrid\NetteDbDataSource,
 use Mesour\DataGrid\Components\Button;
 use Nette\Application\UI\Form;
 
-class PredpisPresenter extends GeneralPresenter
+class PredpisPresenter extends GeneralAdminPresenter
 {
     public $pojistovnaManager;
 

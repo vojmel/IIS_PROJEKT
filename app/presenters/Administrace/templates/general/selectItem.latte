@@ -4,6 +4,8 @@ Vybirani itemu
 {block content}
 <script type="text/javascript">
     $( "#menu" ).hide();
+    $( "#menu2" ).hide();
+    $("#content").css('marginLeft','10px');
 </script>
 <h1 n:block="title">{$nadpis}</h1>
 <button onclick="sendDataToParent({$site}, {$showNumbers})">Vybrat</button>

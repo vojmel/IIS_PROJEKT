@@ -2,6 +2,11 @@
 Vybrane itemy
 *}
 {block content}
+    <script type="text/javascript">
+        $( "#menu" ).hide();
+        $( "#menu2" ).hide();
+        $("#content").css('marginLeft','10px');
+    </script>
     <div id="selectedItems">
         {control selectedItemsDatagrid}
     </div>

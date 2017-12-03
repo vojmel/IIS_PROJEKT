@@ -11,7 +11,7 @@ use Mesour\DataGrid\NetteDbDataSource,
 use Mesour\DataGrid\Components\Button;
 use Nette\Application\UI\Form;
 
-class LekarnikPresenter extends GeneralPresenter
+class LekarnikPresenter extends GeneralAdminPresenter
 {
     public $pobockaManager;
 

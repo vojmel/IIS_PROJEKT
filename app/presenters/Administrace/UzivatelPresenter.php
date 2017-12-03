@@ -22,7 +22,7 @@ use Mesour\DataGrid\NetteDbDataSource,
 use Mesour\DataGrid\Components\Button;
 use Nette\Application\UI\Form;
 
-class UzivatelPresenter  extends GeneralPresenter
+class UzivatelPresenter  extends GeneralAdminPresenter
 {
 
     public $roleManager;
