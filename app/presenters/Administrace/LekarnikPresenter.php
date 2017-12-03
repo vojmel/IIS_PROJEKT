@@ -3,6 +3,7 @@
 namespace App\Presenters;
 
 use App\Model\LekarnikManager;
+use App\Model\PobockaManager;
 use Nette;
 use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Grid,
@@ -12,12 +13,14 @@ use Nette\Application\UI\Form;
 
 class LekarnikPresenter extends GeneralPresenter
 {
+    public $pobockaManager;
 
-    public function __construct(LekarnikManager $predpisManager)
+    public function __construct(LekarnikManager $predpisManager, PobockaManager $pobockaManager)
     {
         parent::__construct();
 
         $this->modelManager = $predpisManager;
+        $this->pobockaManager = $pobockaManager;
 
         $this->site = 'lekarnik';
         $this->nadpisy = array(
@@ -69,13 +72,16 @@ class LekarnikPresenter extends GeneralPresenter
         $grid->addNumber('pobockaID', 'Pobočka id')
             ->setThousandsSeparator(false);
 
-        $grid->addTemplate('pobockaID', 'Pobočka název')
+
+        $grid->addTemplate('pobockaID', 'Pobočka nazev')
             ->setCallbackArguments(array($this))
             ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
             ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
                 $template->id = $data['pobockaID'];
-                $template->nazev = $data['pobockaID'];
+                $template->nazev = $presenter->pobockaManager->getName($data['pobockaID']);
             });
+
+
 
 
         return $grid;

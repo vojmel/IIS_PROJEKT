@@ -3,6 +3,7 @@
 namespace App\Presenters;
 
 use App\Model\PredpisManager;
+use App\Model\PojistovnaManager;
 use Nette;
 use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Grid,
@@ -12,12 +13,14 @@ use Nette\Application\UI\Form;
 
 class PredpisPresenter extends GeneralPresenter
 {
+    public $pojistovnaManager;
 
-    public function __construct(PredpisManager $predpisManager)
+    public function __construct(PredpisManager $predpisManager, PojistovnaManager $pojistovnaManager)
     {
         parent::__construct();
 
         $this->modelManager = $predpisManager;
+        $this->pojistovnaManager = $pojistovnaManager;
 
         $this->site = 'predpis';
         $this->nadpisy = array(
@@ -57,8 +60,24 @@ class PredpisPresenter extends GeneralPresenter
         $grid->addNumber('prodejID', 'Číslo prodeje')
             ->setThousandsSeparator(false);
 
-        $grid->addNumber('pojistovnaID', 'Číslo pojišťovny')
+        $grid->addNumber('pojistovnaID', 'ID Číslo pojišťovny')
             ->setThousandsSeparator(false);
+
+//        $grid->addTemplate('cisloPojistovny', 'Číslo pojišťovny')
+//            ->setCallbackArguments(array($this))
+//            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+//            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+//                $template->id = $data['pojistovnaID'];
+//                $template->nazev = $presenter->pojistovnaManager->getNumber($data['cisloPojistovny']);
+//            });
+
+        $grid->addTemplate('pojistovnaID', 'Pojišťovna nazev')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                $template->id = $data['pojistovnaID'];
+                $template->nazev = $presenter->pojistovnaManager->getName($data['pojistovnaID']);
+            });
 
 
         return $grid;

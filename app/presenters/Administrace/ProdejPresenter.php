@@ -3,6 +3,8 @@
 namespace App\Presenters;
 
 use App\Model\ProdejManager;
+use App\Model\PobockaManager;
+use App\Model\LekarnikManager;
 use Nette;
 use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Grid,
@@ -12,12 +14,16 @@ use Nette\Application\UI\Form;
 
 class ProdejPresenter extends GeneralPresenter
 {
+    public $pobockaManager;
+    public $lekarnikManager;
 
-    public function __construct(ProdejManager $prodejManager)
+    public function __construct(ProdejManager $prodejManager, PobockaManager $pobockaManager, LekarnikManager $lekarnikManager)
     {
         parent::__construct();
 
         $this->modelManager = $prodejManager;
+        $this->pobockaManager = $pobockaManager;
+        $this->lekarnikManager = $lekarnikManager;
 
         $this->site = 'prodej';
         $this->nadpisy = array(
@@ -47,8 +53,29 @@ class ProdejPresenter extends GeneralPresenter
         $grid->addDate('datum', 'Datum prodeje')
             ->setFormat('j.n.Y H:i:s');
 
-        $grid->addNumber('pobockaID', 'Pobočka');
-        $grid->addNumber('lekarnikID', 'Uskutečnil');
+//        $grid->addNumber('pobockaID', 'Pobočka');
+
+
+        $grid->addTemplate('pobockaID', 'Pobočka')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                $template->id = $data['pobockaID'];
+                $template->nazev = $presenter->pobockaManager->getName($data['pobockaID']);
+            });
+
+
+//        $grid->addNumber('lekarnikID', 'Lékarník');
+
+
+        $grid->addTemplate('lekarnikID', 'Lékárník')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                $template->id = $data['lekarnikID'];
+                $template->nazev = $presenter->lekarnikManager->getName($data['lekarnikID']);
+            });
+
 
 
         return $grid;
@@ -69,7 +96,10 @@ class ProdejPresenter extends GeneralPresenter
             ->addRule($form::PATTERN, "Datum musí být ve formátu dd.mm.rrrr", "(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d");
 
         ///TODO LIST POBOCEK
+
+
         ///TODO LIST ZAMESTNANCU KDO PRODEJ USKUTECNIL
+
         ///TODO automaticky vytvaret datum  prodeje
 
 

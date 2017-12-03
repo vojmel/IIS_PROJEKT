@@ -22,3 +22,6 @@ services:
 	- App\Model\DoplatekManager
 	- App\Model\UskladnenManager
 	- App\Model\SeznampolozekManager
+	- App\Model\PredpisnaManager
+	- App\Model\ObsahujeManager
+	- App\Model\ObjednavkaobsahujeManager

@@ -3,6 +3,8 @@
 namespace App\Presenters;
 
 use App\Model\RezervaceManager;
+use App\Model\PobockaManager;
+use App\Model\LekarnikManager;
 use Nette;
 use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Grid,
@@ -12,12 +14,16 @@ use Nette\Application\UI\Form;
 
 class RezervacePresenter extends GeneralPresenter
 {
+    public $pobockaManager;
+    public $lekarnikManager;
 
-    public function __construct(RezervaceManager $rezervaceManager)
+    public function __construct(RezervaceManager $rezervaceManager, PobockaManager $pobockaManager, LekarnikManager $lekarnikManager)
     {
         parent::__construct();
 
         $this->modelManager = $rezervaceManager;
+        $this->pobockaManager = $pobockaManager;
+        $this->lekarnikManager = $lekarnikManager;
 
         $this->site = 'rezervace';
         $this->nadpisy = array(
@@ -44,7 +50,7 @@ class RezervacePresenter extends GeneralPresenter
     {
         $grid->addNumber('rezervaceID', 'Id');
 
-        $grid->addText('jmenoZakaznika', 'jmenoZakaznika');
+        $grid->addText('jmenoZakaznika', 'Jmno Zakaznika');
 
         $grid->addDate('datumExpirace', 'Datum expirace')
             ->setFormat('j.n.Y H:i:s');
@@ -56,10 +62,27 @@ class RezervacePresenter extends GeneralPresenter
                 $template->state = $data['vyzvednuto'];
             });
 
-        ///TODO FIX MEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
         $grid->addNumber('pobockaID', 'Pobočka');
+
+
+
+        $grid->addTemplate('pobockaID', 'Pobočka')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                $template->id = $data['pobockaID'];
+                $template->nazev = $presenter->pobockaManager->getName($data['pobockaID']);
+            });
+
         $grid->addNumber('lekarnikID', 'Lekarník');
 
+        $grid->addTemplate('lekarnikID', 'Lékárník')
+            ->setCallbackArguments(array($this))
+            ->setTemplate(__DIR__ . '/templates/Column/_itemName.latte') // or instanceof UI\ITemplate
+            ->setCallback(function($data, Nette\Application\UI\ITemplate $template, $presenter) {
+                $template->id = $data['lekarnikID'];
+                $template->nazev = $presenter->lekarnikManager->getName($data['lekarnikID']);
+            });
 
 
 
