@@ -28,6 +28,7 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
             'Prodej' => 'Prodej:',
             'Sortiment' => 'Sortiment:',
             'Rezervace' => 'Rezervace:',
+            'Předpisy' => 'Predpis:',
         );
     }
 }

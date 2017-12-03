@@ -18,3 +18,4 @@ services:
 	- App\Model\ProdejManager
 	- App\Model\SortimentManager
 	- App\Model\RezervaceManager
+	- App\Model\PredpisManager
