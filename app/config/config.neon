@@ -10,10 +10,14 @@ application:
 		*: App\*Module\Presenters\*Presenter
 
 services:
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     - App\Model\ObjednavkaobsahujeManager
 =======
 >>>>>>> Stashed changes
+=======
+	- App\Model\ObjednavkaobsahujeManager
+>>>>>>> master
     - App\Model\LekManager
     - App\Model\RoleManager
     - App\Model\DodavatelManager
@@ -27,9 +31,15 @@ services:
     - App\Model\DoplatekManager
     - App\Model\UskladnenManager
     - App\Model\UzivatelManager
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     - App\Model\ObjednavkaManager
     - App\Model\ObsahujeManager
 =======
 >>>>>>> Stashed changes
     authenticator: App\Model\Authenticator
+=======
+    authenticator: App\Model\Authenticator
+	- App\Model\ObjednavkaManager
+	- App\Model\ObsahujeManager
+>>>>>>> master

@@ -48,7 +48,10 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
             'Uskladnění' => 'Uskladnen:',
             'Správa uživatelů' => 'Uzivatel:',
             'Správa rolí' => 'Role:',
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> master
             'Seznamy položek' => 'Seznampolozek:',
             'Předpis na' => 'Predpisna:',
             'Objednávka' => 'Objednavka:',
