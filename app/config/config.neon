@@ -10,19 +10,20 @@ application:
 		*: App\*Module\Presenters\*Presenter
 
 services:
-	- App\Model\LekManager
-	- App\Model\DodavatelManager
-	- App\Model\LekarnikManager
-	- App\Model\PobockaManager
-	- App\Model\PojistovnaManager
-	- App\Model\ProdejManager
-	- App\Model\SortimentManager
-	- App\Model\RezervaceManager
-	- App\Model\PredpisManager
-	- App\Model\DoplatekManager
-	- App\Model\UskladnenManager
-	- App\Model\SeznampolozekManager
-	- App\Model\PredpisnaManager
-	- App\Model\ObsahujeManager
-	- App\Model\ObjednavkaManager
 	- App\Model\ObjednavkaobsahujeManager
+    - App\Model\LekManager
+    - App\Model\RoleManager
+    - App\Model\DodavatelManager
+    - App\Model\LekarnikManager
+    - App\Model\PobockaManager
+    - App\Model\PojistovnaManager
+    - App\Model\ProdejManager
+    - App\Model\SortimentManager
+    - App\Model\RezervaceManager
+    - App\Model\PredpisManager
+    - App\Model\DoplatekManager
+    - App\Model\UskladnenManager
+    - App\Model\UzivatelManager
+    authenticator: App\Model\Authenticator
+	- App\Model\ObjednavkaManager
+	- App\Model\ObsahujeManager

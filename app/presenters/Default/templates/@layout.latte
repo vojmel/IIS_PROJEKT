@@ -24,13 +24,30 @@
 	<nav class="navbar navbar-light" style="background-color: #e6eaf2;">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" n:href="Homepage:default">Administrace</a>
+				<a class="navbar-brand" n:href="Homepage:default">Lékárna</a>
 			</div>
 			<ul class="nav navbar-nav">
 				{foreach $menuItems as $item => $link}
 					<li {ifCurrent $link}class="active"{/ifCurrent} ><a n:href="$link">{$item}</a></li>
 				{/foreach}
 			</ul>
+			<div style="float:right;">
+				<ul class="nav navbar-nav">
+					<li>
+						<p class="navbar-btn">
+							{if $user->isLoggedIn()}
+								{$user->getIdentity()->username}
+								{if $user->getIdentity()->roleID == 1}
+									<a href="{plink Administrace:default}" style="margin-left: 20px;" class="btn btn-primary">Administrace</a>
+								{/if}
+								<a href="{plink Sign:out}" class="btn btn-danger">Odhlásit</a>
+							{else}
+								<a href="{plink Sign:in}" class="btn btn-primary">Přihlásit</a>
+							{/if}
+						</p>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</nav>
 
