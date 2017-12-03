@@ -102,19 +102,25 @@ class PredpisPresenter extends GeneralPresenter
         $form->addText('prijmeniZakaznika', 'Příjmení zákazníka: ', 100)
             ->setRequired(true);
 
-        $form->addText('rodneCislo', 'Rodné Číslo zákazníka:', 20)
+        $form->addText('rodneCisloZakaznika', 'Rodné Číslo zákazníka:', 20)
             ->setHtmlType('number')
             ->setRequired(true);
 
-        ///TODO PRIDAT ABY BYL VYBER ZE SEZNAMU
+//        $form->addText('prodejID', 'Číslo prodeje: ', 11)
+//            ->setHtmlType('number')
+//            ->setRequired(true);
 
-        $form->addText('prodejID', 'Číslo prodeje: ', 11)
-            ->setHtmlType('number')
-            ->setRequired(true);
+        $form->addSelectItem('prodejID', 'Prodej: ', 'prodej')
+            ->setSearchOne(true)
+            ->setRequired('Field "Prodej" is required.')
+            ->setButtonLabel("Vybrat prodej");
 
-        $form->addText('pojistovnaID', 'Číslo pojistovny: ', 11)
-            ->setHtmlType('number')
-            ->setRequired(true);
+
+        $form->addSelectItem('pojistovnaID', 'Pojišťovna: ', 'pojistovna')
+            ->setSearchOne(true)
+            ->setRequired('Field "Pojišťovna" is required.')
+            ->setButtonLabel("Vybrat pojišťovnu");
+
 
         return $form;
     }

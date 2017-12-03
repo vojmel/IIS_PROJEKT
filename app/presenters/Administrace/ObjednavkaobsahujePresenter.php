@@ -30,8 +30,8 @@ class ObjednavkaobsahujePresenter extends GeneralPresenter
         $this->nadpisy = array(
             "default"   => 'Obsahy objednávek',
             "edit"      => 'Editace obsahu objednávky: ', // + id editovaneho
-            "add"       => 'Přidání obsahu objednávky:',
-            "select"    => 'Vybrat obsahu objednávky: ',
+            "add"       => 'Přidání obsahu do objednávky:',
+            "select"    => 'Vybrání obsahu objednávky:',
         );
         $this->messages = array(
             "INSERT_OK" => "Obsah objednávky byl přidán.",
@@ -81,6 +81,30 @@ class ObjednavkaobsahujePresenter extends GeneralPresenter
      */
     protected function defineInputsForForm($form)
     {
+        $form->addSelectItem('objednavkaID', 'Objednávka: ', 'objednavka')
+            ->setSearchOne(true)
+            ->setRequired('Field "Objednávka" is required.')
+            ->setButtonLabel("Vybrat objednávku");
+
+
+        $form->addSelectItem('lekID', 'Lék: ', 'lek')
+            ->setSearchOne(true)
+            ->setRequired('Field "Lék" is required.')
+            ->setButtonLabel("Vybrat lék");
+
+
+        // Cislo
+        $form->addText('cena', 'Cena:', 38)
+            ->setHtmlType('number')
+            ->setRequired(true);
+
+
+        // Cislo
+        $form->addText('mnozstvi', 'Množství:', 11)
+            ->setHtmlType('number')
+            ->setRequired(true);
+
+
 
         return $form;
     }

@@ -30,15 +30,15 @@ class ObsahujePresenter extends GeneralPresenter
         $this->site = 'obsahuje';
         $this->nadpisy = array(
             "default"   => 'Obsahy rezervací',
-            "edit"      => 'Editace objednavka Obsahuje: ', // + id editovaneho
-            "add"       => 'Přidání Predpisu na lék:',
-            "select"    => 'Vybrat Predpisu na lék: ',
+            "edit"      => 'Editace položky z rezervace: ', // + id editovaneho
+            "add"       => 'Přidání položky do rezervace:',
+            "select"    => 'Vybrat položku z rezervace: ',
         );
         $this->messages = array(
-            "INSERT_OK" => "Predpisu na lék byl přidán.",
-            "INSERT_BAD" => "Predpisu na lék se nepodařilo přidat",
-            "UPDATE_OK" => "Predpisu na lék byl upraven.",
-            "UPDATE_BAD" => "Predpisu na lék se nepodařilo upravit.",
+            "INSERT_OK" => "Položka rezervace byla přidána.",
+            "INSERT_BAD" => "Položku rezervace se nepodařilo přidat",
+            "UPDATE_OK" => "Položka rezervace byla upravena.",
+            "UPDATE_BAD" => "Položku rezervace se nepodařilo upravit.",
         );
     }
 
@@ -77,6 +77,22 @@ class ObsahujePresenter extends GeneralPresenter
      */
     protected function defineInputsForForm($form)
     {
+        // Cislo
+        $form->addText('mnozstvi', 'Množství:', 11)
+            ->setHtmlType('number')
+            ->setRequired(true);
+
+        // Cislo
+        $form->addSelectItem('rezervaceID', 'Rezervace: ', 'rezervace')
+            ->setSearchOne(true)
+            ->setRequired('Field "Rezervace" is required.')
+            ->setButtonLabel("Vybrat Rezervaci");
+
+
+        $form->addSelectItem('lekID', 'Lék: ', 'lek')
+            ->setSearchOne(true)
+            ->setRequired('Field "Lék" is required.')
+            ->setButtonLabel("Vybrat lék");
 
         return $form;
     }

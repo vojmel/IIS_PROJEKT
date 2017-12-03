@@ -90,10 +90,15 @@ class SeznampolozekPresenter extends GeneralPresenter
             ->setRequired(true);
 
 
-        $form->addSelectItem('pojistovnaID', 'Pojišťovna: ', 'pojistovna')
+        // Cislo
+        $form->addText('mnozstvi', 'Množství:', 11)
+            ->setHtmlType('number')
+            ->setRequired(true);
+
+        $form->addSelectItem('prodejID', 'Prodej: ', 'prodej')
             ->setSearchOne(true)
-            ->setRequired('Field "Pojišťovna" is required.')
-            ->setButtonLabel("Vybrat pojišťovnu");
+            ->setRequired('Field "Prodej" is required.')
+            ->setButtonLabel("Vybrat prodej");
 
 
         $form->addSelectItem('lekID', 'Lék: ', 'lek')

@@ -19,7 +19,7 @@ class PobockaPresenter extends GeneralPresenter
 
         $this->modelManager = $pobockaManager;
 
-        $this->site = 'lek';
+        $this->site = 'pobocka';
         $this->nadpisy = array(
             "default"   => 'Pobočky',
             "edit"      => 'Editace pobočky: ', // + id editovaneho

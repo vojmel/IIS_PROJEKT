@@ -28,9 +28,9 @@ class UskladnenPresenter extends GeneralPresenter
         $this->site = 'uskladnen';
         $this->nadpisy = array(
             "default"   => 'Uskladněné léky',
-            "edit"      => 'Editace uskladnění: ', // + id editovaneho
-            "add"       => 'Přidání uskladnění:',
-            "select"    => 'Vybrat uskladnění: ',
+            "edit"      => 'Editace uskladněného léku: ', // + id editovaneho
+            "add"       => 'Přidání uskladněného léku:',
+            "select"    => 'Vybrat uskladněný lék: ',
         );
         $this->messages = array(
             "INSERT_OK" => "Uskladnění bylo přidáno.",
@@ -85,6 +85,23 @@ class UskladnenPresenter extends GeneralPresenter
      */
     protected function defineInputsForForm($form)
     {
+
+        $form->addSelectItem('lekID', 'Lék: ', 'lek')
+            ->setSearchOne(true)
+            ->setRequired('Field "Lék" is required.')
+            ->setButtonLabel("Vybrat lék");
+
+
+        $form->addSelectItem('pobockaID', 'Pobočka: ', 'pobocka')
+            ->setSearchOne(true)
+            ->setRequired('Field "Pobočka" is required.')
+            ->setButtonLabel("Vybrat pobočku");
+
+        // Cislo
+        $form->addText('mnozstvi', 'Množství: ', 11)
+            ->setHtmlType('number')
+            ->setRequired(true);
+
         return $form;
     }
 

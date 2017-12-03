@@ -29,9 +29,9 @@ class PredpisnaPresenter extends GeneralPresenter
         $this->site = 'predpisna';
         $this->nadpisy = array(
             "default"   => 'Předpisy na léky',
-            "edit"      => 'Editace Predpisu na lék: ', // + id editovaneho
-            "add"       => 'Přidání Predpisu na lék: ',
-            "select"    => 'Vybrat Predpisu na lék: ',
+            "edit"      => 'Editace léku z předpisu: ', // + id editovaneho
+            "add"       => 'Přidání léku k předpisu: ',
+            "select"    => 'Vybrat léku z předpisu: ',
         );
         $this->messages = array(
             "INSERT_OK" => "Predpisu na lék byl přidán.",
@@ -77,6 +77,23 @@ class PredpisnaPresenter extends GeneralPresenter
      */
     protected function defineInputsForForm($form)
     {
+        $form->addSelectItem('predpisID', 'Předpis: ', 'predpis')
+            ->setSearchOne(true)
+            ->setRequired('Field "Předpis" is required.')
+            ->setButtonLabel("Vybrat předpis");
+
+
+        $form->addSelectItem('lekID', 'Lék: ', 'lek')
+            ->setSearchOne(true)
+            ->setRequired('Field "Lék" is required.')
+            ->setButtonLabel("Vybrat lék");
+
+
+        // Cislo
+        $form->addText('mnozstvi', 'Množství:', 11)
+            ->setHtmlType('number')
+            ->setRequired(true);
+
 
         return $form;
     }
