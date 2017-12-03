@@ -8,6 +8,7 @@
 
 namespace App\Presenters;
 
+use App\Model\LekManager;
 use Nette;
 use Mesour\DataGrid\NetteDbDataSource,
     Mesour\DataGrid\Grid;
@@ -15,6 +16,7 @@ use Mesour\DataGrid\NetteDbDataSource,
 
 abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
 {
+
     public function beforeRender()
     {
         parent::beforeRender(); // nezapomeňte volat metodu předka, stejně jako u startup()
@@ -25,6 +27,7 @@ abstract class DefaultAdminPresenter extends Nette\Application\UI\Presenter
             'Lékárníci' => 'Lekarnik:',
             'Pobočky' => 'Pobocka:',
             'Pojišťovna' => 'Pojistovna:',
+            'Doplatek na lek' => 'Doplatek:',
         );
     }
 }

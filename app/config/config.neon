@@ -15,3 +15,4 @@ services:
 	- App\Model\LekarnikManager
 	- App\Model\PobockaManager
 	- App\Model\PojistovnaManager
+	- App\Model\DoplatekManager

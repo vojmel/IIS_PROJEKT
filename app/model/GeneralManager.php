@@ -6,6 +6,7 @@
 
 
 namespace App\Model;
+use Exception;
 use Nette;
 
 class GeneralManager
@@ -38,7 +39,11 @@ class GeneralManager
     public function delete($id) {
         $row = $this->getSpecific($id);
         if ($row) {
-            return $row->delete();
+            try {
+                return $row->delete();
+            } catch (Exception $e) {
+                return false;
+            }
         }
         return null;
     }

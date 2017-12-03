@@ -37,6 +37,16 @@ class GeneralPresenter extends DefaultAdminPresenter
         "UPDATE_BAD" => "Lek se nepodařilo upravit.",
     );
 
+    /** @var string Sblona pro editovani */
+    protected $templateForEdit  = __DIR__ . '/templates/general/editItem.latte';
+
+    /** @var string Sblona pro pridani noveho */
+    protected $templateForAdd   = __DIR__ . '/templates/general/addItem.latte';
+
+
+
+
+
 
     /**
      * Renderovani defaultni stranky
@@ -70,7 +80,7 @@ class GeneralPresenter extends DefaultAdminPresenter
 
         /** @var Nette\Bridges\ApplicationLatte\Template $template */
         $template = $this->template;
-        $template->setFile(__DIR__ . '/templates/general/editItem.latte');
+        $template->setFile($this->templateForEdit);
 
         $item = $this->modelManager->getSpecific($id);
         if (!$item) {
@@ -98,7 +108,7 @@ class GeneralPresenter extends DefaultAdminPresenter
 
         /** @var Nette\Bridges\ApplicationLatte\Template $template */
         $template = $this->template;
-        $template->setFile(__DIR__ . '/templates/general/addItem.latte');
+        $template->setFile($this->templateForAdd);
 
         $this->template->nadpis = $this->nadpisy['add'];
 
@@ -292,7 +302,7 @@ class GeneralPresenter extends DefaultAdminPresenter
             $grid->addTemplate('pocet', 'Počet')
                 ->setTemplate(__DIR__ . '/templates/Column/_number.latte')
                 ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
-                    $template->value = $this->getPocetForId($data['lekID']);
+                    $template->value = $this->getPocetForId($this->modelManager->getPkColumn());
                 });
         }
         return $grid;
@@ -421,7 +431,7 @@ class GeneralPresenter extends DefaultAdminPresenter
         $grid->addTemplate('checkbox', '')
             ->setTemplate(__DIR__ . '/templates/Column/_checkBox.latte')
             ->setCallback(function($data, Nette\Application\UI\ITemplate $template) {
-                $template->id = $data['lekID'];
+                $template->id = $data[$this->modelManager->getPkColumn()];
             });
 
         $grid = $this->addColumnsToGrid($grid); // pridani sloupecku
@@ -454,6 +464,7 @@ class GeneralPresenter extends DefaultAdminPresenter
     protected function addInputsToForm($form) {
         return $this->defineInputsForForm($form);
     }
+
 
     /**
      * Vytvoreni formulare

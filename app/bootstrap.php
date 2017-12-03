@@ -37,5 +37,8 @@ $router[] = new Route('<presenter>/<action>[/<id>]', 'Homepage:default');
 $container->addService('router', $router);
 
 
+Nette\Object::extensionMethod('Nette\Forms\Container::addSelectItem', function($form, $name, $label = NULL, $from, $selectOne = false){
+    $form[$name] = new \SelectItemControl($name, $label, $from, $selectOne);
+});
 
 return $container;

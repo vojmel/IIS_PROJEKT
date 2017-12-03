@@ -1,3 +1,6 @@
+$(".alert")
+        .delay(3000)
+        .slideUp(500);
 
 /* Number spinner */
 $(document).on('click', '.number-spinner button', function () {
