@@ -11,7 +11,10 @@ application:
 
 services:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     - App\Model\ObjednavkaobsahujeManager
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     - App\Model\LekManager
@@ -28,8 +31,11 @@ services:
     - App\Model\UskladnenManager
     - App\Model\UzivatelManager
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     - App\Model\ObjednavkaManager
     - App\Model\ObsahujeManager
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     authenticator: App\Model\Authenticator
