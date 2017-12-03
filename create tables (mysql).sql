@@ -578,3 +578,36 @@ ALTER TABLE obsahuje ADD obsahujeID INT PRIMARY KEY AUTO_INCREMENT;
 ALTER TABLE objednavkaobsahuje ADD objednavkaobsahujeID INT PRIMARY KEY AUTO_INCREMENT;
 
 COMMIT;
+
+
+create table uzivatel (
+    uzivatelID integer NOT NULL AUTO_INCREMENT,
+    username varchar(100) NOT NULL,
+    password varchar(400) NOT NULL,
+    roleID integer NOT NULL,
+    lekarnikID integer NOT NULL,
+    CONSTRAINT uzivatel_pk PRIMARY KEY (uzivatelID)
+) ENGINE=InnoDB CHARSET=utf8;
+
+create table role (
+    roleID integer NOT NULL AUTO_INCREMENT,
+    definice varchar(400) NOT NULL,
+    jmeno varchar(400) NOT NULL,
+    CONSTRAINT role_pk PRIMARY KEY (roleID)
+) ENGINE=InnoDB CHARSET=utf8;
+
+
+
+insert into role (roleID, definice, jmeno) values (1, 'Administrator', 'admin');
+insert into role (roleID, definice, jmeno) values (2, 'Lekarnik', 'lekarnik');
+
+
+insert into uzivatel (uzivatelID, username, password, roleID, lekarnikID) 
+  values 
+  (1, 'admin', '$2a$04$Rq9RBaCs0oLwxTlh2JeGj.H8BaeEbvIeOrc51A117gcNsyDOPEtwa', 1, 1);
+
+
+
+insert into uzivatel (uzivatelID, username, password, roleID, lekarnikID) 
+  values 
+  (2, 'user', '$2a$04$Rq9RBaCs0oLwxTlh2JeGj.H8BaeEbvIeOrc51A117gcNsyDOPEtwa', 2, 2);

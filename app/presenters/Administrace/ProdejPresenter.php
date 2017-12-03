@@ -33,10 +33,10 @@ class ProdejPresenter extends GeneralPresenter
             "select"    => 'Vybrat prodej: ',
         );
         $this->messages = array(
-            "INSERT_OK" => "Prodej byl přidán.",
-            "INSERT_BAD" => "Prodej se nepodařilo přidat",
-            "UPDATE_OK" => "Prodej byl upraven.",
-            "UPDATE_BAD" => "Prodej se nepodařilo upravit.",
+            "INSERT_OK" => "ProdejLeku byl přidán.",
+            "INSERT_BAD" => "ProdejLeku se nepodařilo přidat",
+            "UPDATE_OK" => "ProdejLeku byl upraven.",
+            "UPDATE_BAD" => "ProdejLeku se nepodařilo upravit.",
         );
     }
 
