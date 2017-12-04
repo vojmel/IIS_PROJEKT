@@ -1,3 +1,41 @@
 {*
-    Leky ze sortimentu
+    Selekt sortiment dodavatele
 *}
+{block content}
+<h2 n:block="title">Nová objednávka</h2>
+<button onclick="goTo('/objednavka-leku/add?pobockaID={$pobockaID|noescape}')" class="btn btn-default">
+    <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-arrow-left"></span>
+    Zpět
+</button>
+<h4>Vyberte léky ze sortimentu dodavatele</h4>
+
+<h3>Vybrané léky ze sortimentu:</h3>
+<button onclick="
+                        openWindowForSelectWhere('sortiment', true, 'dodavatelID', {$dodavatelID});
+                        setIdFroDataFromSelectDatagrid('vybraneLekyDatagrid');
+                        setIdFroDataFromSelect('vybraneLekyIds');
+                        " class="btn btn-success">
+    <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-plus"></span>
+    Přidat léky
+</button>
+<button onclick="
+                        clearSelectedItems('vybraneLekyIds');
+                        getSelectedData('sortiment', $('#vybraneLekyIds').val(), true, 'vybraneLekyDatagrid');
+                        clearPoleIds();
+                        " class="btn btn-danger">
+    <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-remove"></span>
+    Odebrat všechny léky
+</button>
+<input type="hidden" id="vybraneLekyIds" name="selectedIds">
+<div id="vybraneLekyDatagrid"></div>
+<br>
+
+<input type="hidden" id="pobockaID" name="pobockaIDNameInput" value="{$pobockaID}">
+<input type="hidden" id="dodavatelID" name="dodavateIDNameInput" value="{$dodavatelID}">
+
+
+{control addFormAdd}
+
+<script type="text/javascript">
+</script>
+

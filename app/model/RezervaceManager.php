@@ -19,9 +19,9 @@ class RezervaceManager extends GeneralManager
 
         $item = $this->getSpecific($rezervaceID);
         if ($item) {
-            $item->update([
+            $item->update(array(
                 'vyzvednuto' => 1
-            ]);
+            ));
         }
     }
 }

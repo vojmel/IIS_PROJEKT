@@ -1,4 +1,9 @@
-{*
-    Vypis all objednavek
-    + odkazi na editaci
-*}
+{block content}
+    <div style="margin-bottom: 10px;">
+    <h3 n:block="title">{$nadpis}</h3>
+    <a href="{plink ObjednavkaLeku:add}" class="btn btn-success" >
+        <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-plus"></span>
+        Vytvořit novou objednávku
+    </a>
+    </div>{control datagrid}
+{/block}

@@ -108,7 +108,7 @@ class GeneralDefaultPresenter extends DefaultLekarnaPresenter
     /**
      * Render pro pridani leku
      */
-    public function renderAdd() {
+    public function renderAdd($pobockaID, $dodavatelID) {
 
         /** @var Nette\Bridges\ApplicationLatte\Template $template */
         $template = $this->template;

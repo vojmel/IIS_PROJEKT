@@ -331,7 +331,7 @@ class GeneralAdminPresenter extends DefaultAdminPresenter
         return $ret;
     }
 
-    protected function getPocetForId($id){
+    public function getPocetForId($id){
 
         // id:pocet  ->    0 id      1 pocet
         foreach ($this->selectedItems as $item) {

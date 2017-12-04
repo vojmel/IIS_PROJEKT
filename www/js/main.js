@@ -355,3 +355,7 @@ function getLekyIdForRezervace(rezervaceID) {
         addValueForId(obj[x][0], obj[x][1]);
     }
 }
+
+function goTo(site) {
+    window.location = getBasePath()+site;
+}

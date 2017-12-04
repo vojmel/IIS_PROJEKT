@@ -57,6 +57,37 @@ class ObjednavkaLekuPresenter extends GeneralDefaultPresenter
     }
 
     /**
+     * Renderovani defaultni stranky
+     */
+    public function renderDefault()
+    {
+        $this->template->nadpis = $this->nadpisy['default'];
+    }
+
+
+    /**
+     * Render pro pridani leku
+     */
+    public function renderAdd($pobockaID, $dodavatelID) {
+
+        /** @var Nette\Bridges\ApplicationLatte\Template $template */
+        $template = $this->template;
+        $template->setFile(__DIR__.'/templates/ObjednavkaLeku/addState1.latte');
+
+        if ($pobockaID) {
+            $template->setFile(__DIR__.'/templates/ObjednavkaLeku/addState2.latte');
+            $template->pobockaID = $pobockaID;
+        }
+        if ($dodavatelID) {
+            $template->setFile(__DIR__.'/templates/ObjednavkaLeku/addState3.latte');
+            $template->pobockaID = $pobockaID;
+            $template->dodavatelID = $dodavatelID;
+        }
+    }
+
+
+
+    /**
      * Definice sloupccu
      *
      * @param Grid $grid
@@ -167,6 +198,88 @@ class ObjednavkaLekuPresenter extends GeneralDefaultPresenter
     }
 
     /**
+     * Vytvoreni formulare
+     *
+     * @return Form
+     */
+    protected function createComponentAddFormAdd()
+    {
+        $form = new Form;
+
+        $form->onSuccess[] = array($this, 'postFormAddSucceededAdd');
+
+
+        // Datum
+        $form->addText("datupObjednani", "Datum objednání: ")
+            ->setAttribute("placeholder", "dd.mm.rrrr")
+            ->setRequired(true)
+            ->addRule($form::PATTERN, "Datum musí být ve formátu dd.mm.rrrr", "(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d");
+
+        $form->addText("datupDoruceni", "Datum doručení: ")
+            ->setAttribute("placeholder", "dd.mm.rrrr")
+            ->setRequired(true)
+            ->addRule($form::PATTERN, "Datum musí být ve formátu dd.mm.rrrr", "(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d");
+
+        $form->addHidden('pobockaID')
+            ->setRequired('Field "Pobočka" is required.');
+
+        $form->addHidden('dodavatelID')
+            ->setRequired('Field "Dodavatel" is required.');
+
+        // vybrane leky k objednavce
+        $form->addHidden('vybraneLekyIds')
+            ->setRequired('Je potřeba vybrat nějaké léky.');
+
+        // Submit button        // Submit button
+        $form->addSubmit('save', 'Uložit objednávku')
+            ->setValidationScope(true)
+            ->getControlPrototype()
+            ->setName('button')
+            ->addAttributes(array(
+                'class' => 'btn btn-success',
+                'onclick' => "getPutValueInt('vybraneLekyIds', 'vybraneLekyIds');getPutValueInt('pobockaID', 'pobockaID');getPutValueInt('dodavatelID', 'dodavatelID');", /*  pridani presunuti aktualnich hodnot vybranych prvku  */
+            ))->setHtml('<span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-floppy-saved"></span> Uložit prodej');
+
+
+        return $form;
+    }
+
+
+    /**
+     * Zmena zpracovani po odeslani obednavky
+     */
+    public function postFormAddSucceededAdd($form, $values)
+    {
+        $values = $this->changeValuesAfterEdit($values);
+
+
+        $leky = $values['vybraneLekyIds'];
+        unset($values['vybraneLekyIds']);
+
+        // zalozit novy prodej
+        $objednavka = $this->modelManager->add($values);
+        if ( ! $objednavka) {
+
+            $this->flashMessage('Nepovedla se založit nová objednávka..', 'warning');
+            $this->redirect('default');
+            return;
+        }
+
+        if ( ! $this->objednavkaobsahujeManager->addSortimentLeky($leky, $objednavka->objednavkaID)) {
+
+            $this->flashMessage('Nepovedl se přidat obsah k objednávce.', 'warning');
+            $this->redirect('default');
+            return;
+        }
+
+
+        $this->flashMessage('Nová objednávka byla vytvořena.', 'success');
+
+        $this->redirect('default');
+
+    }
+
+    /**
      * Zmena zpracovani po odeslani obednavky
      */
     public function postFormAddSucceeded($form, $values)
@@ -201,32 +314,6 @@ class ObjednavkaLekuPresenter extends GeneralDefaultPresenter
                 }
             }
         }
-
-        // INSERT?
-        else {
-
-            /*
-            // zalozit novy prodej
-            if ( ! $this->prodejManager->addFromIds($values['vybraneLekyIds'], $pobockaID, $lekarnikID)) {
-
-                $this->flashMessage('Nepovedl se založit nový prodej.', 'warning');
-                $this->redirect('default');
-                return;
-            }
-
-            // rezervace vyzvednuto nastavit na ano
-            $rezervace = $values['vybraneRezervaceIds'];
-            if (count($rezervace) > 0) {
-                $rezervaceArr = explode(',', $rezervace);
-
-                foreach ($rezervaceArr as $rez) {
-                    $rez = explode(':', $rez);
-                    $this->rezervaceManager->setVyzvednuto($rez[0]);
-                }
-            }
-
-            $this->flashMessage('Nový prodej byl vytvořen.', 'success');*/
-        }
         $this->redirect('default');
     }
 
@@ -243,7 +330,7 @@ class ObjednavkaLekuPresenter extends GeneralDefaultPresenter
         $form = $this->addInputsToForm($form);
 
         // Submit button
-        $form->addSubmit('save', 'Uložit prodej')
+        $form->addSubmit('save', 'Uložit objednávku')
             ->setValidationScope(true)
             ->getControlPrototype()
             ->setName('button')

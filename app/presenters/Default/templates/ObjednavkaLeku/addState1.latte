@@ -1,3 +1,44 @@
 {*
     Select pobocky
 *}
+{block content}
+<h2 n:block="title">Nová objednávka</h2>
+<button onclick="goTo('/objednavka-leku/')" class="btn btn-default">
+    <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-arrow-left"></span>
+    Zpět
+</button>
+<button onclick="gotoIfGoID()" class="btn btn-primary">
+    <span style="font-size:16px; margin-left: 15px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-arrow-right"></span>
+    Pokračovat
+</button>
+<h4>Vyberte pobočku na kterou se má objednávka odeslat</h4>
+
+<h3>Vybraná pobočka:</h3>
+<button onclick="
+                        openWindowForSelectOne('pobocka', false);
+                        setIdFroDataFromSelectDatagrid('vybranePobockyDatagrid');
+                        setIdFroDataFromSelect('vybranaPobockaID');
+                        " class="btn btn-success">
+    <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-search"></span>
+    Vybrat pobočku
+</button>
+<input type="hidden" id="vybranaPobockaID" name="selectedIds">
+<div id="vybranePobockyDatagrid"></div>
+
+<script type="text/javascript">
+    function getIdPobocky() {
+        var id = $('#vybranaPobockaID').val();
+        return id;
+    }
+    function gotoIfGoID(){
+        if (getIdPobocky()) {
+            var id = getIdPobocky();
+            id = id.split(':');
+            goTo('/objednavka-leku/add?pobockaID='+id[0]);
+        }
+        else {
+            alert('Je potřeba vybrat pobočku.');
+        }
+    }
+</script>
+
