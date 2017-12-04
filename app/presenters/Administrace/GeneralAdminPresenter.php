@@ -134,22 +134,40 @@ class GeneralAdminPresenter extends DefaultAdminPresenter
         $this->setLayout(__DIR__ . '/templates/selectItemLayout.latte');
     }
 
+
+    // Pro jednoduchou podminku z adresy
+    private $addWhereForColumn      = false;
+    private $addWhereForColumnName  = "";
+    private $addWhereForColumnVal   = "";
+
     /**
      * Render pro selektovani itemu
      *
      * @param $one
      */
-    public function renderSelect($one) {
+    public function renderSelect($one, $inc, $columnNameForWhere, $valueForWhere) {
 
-        if (!$one) {
-            // Ano neni to nejhezci reseni, ale co se da delat
-            // Vlozime promenout a pak v js hlidame aby neselectoval vice nez jeden
-            // Pouze pokud je tahle promenna definovana
-            echo "<script type='text/javascript'>var canSelectMoreTrue = true;</script>";
-            $this->showPocetSelected = true;
-        } else {
-            echo "<script type='text/javascript'>var canSelectMoreTrue = false;</script>";
-            $this->showPocetSelected = false;
+        // Omezeni na jeden radek
+        $this->showPocetSelected = true;
+        if ($one) {
+            if ($one == 'true') {
+                $this->showPocetSelected = false;
+            }
+        }
+
+        // Pridavani do selektovanych id
+        $incIds = false;
+        if ($inc) {
+            if ($inc == 'true') {
+                $incIds = true;
+            }
+        }
+
+        // Jednoducha podminka
+        if ($columnNameForWhere) {
+            $this->addWhereForColumn = true;
+            $this->addWhereForColumnName = $columnNameForWhere;
+            $this->addWhereForColumnVal = $valueForWhere;
         }
 
         /** @var Nette\Bridges\ApplicationLatte\Template $template */
@@ -159,6 +177,13 @@ class GeneralAdminPresenter extends DefaultAdminPresenter
         $this->template->site       = $this->site;
         $this->template->nadpis     = $this->nadpisy["select"];
         $this->template->showNumbers = ($this->showPocetSelected)? 'true':'false';
+        $this->template->showNumberBool = $this->showPocetSelected;
+        $this->template->inc        = ($incIds)? 'true':'false';
+    }
+
+
+    protected function addBasicWhereFromURL(){
+        return $this->addWhereForColumn;
     }
 
 
@@ -375,6 +400,11 @@ class GeneralAdminPresenter extends DefaultAdminPresenter
 
         if ($this->haveToFilter()) {
             $source->where($this->getModelManager()->getPkColumn(), $this->generateWhere());
+        }
+
+        // Pridani jednoduche podminky z URL
+        if ($this->addBasicWhereFromURL()) {
+            $source->where($this->addWhereForColumnName." = ?", $this->addWhereForColumnVal);
         }
 
 

@@ -1,0 +1,89 @@
+{block content}
+<div style="margin: 10px 10px 10px 10px;">
+    <h2 n:block="title">Nový prodej</h2>
+    <div id="addProdejContent">
+
+        {control addForm}
+
+        <h3>Vybrané položky:</h3>
+        <button onclick="
+                        openWindowForSelect('lek', true);
+                        setIdFroDataFromSelectDatagrid('vybraneLekyDatagrid');
+                        setIdFroDataFromSelect('vybraneLekyIds');
+                        " class="btn btn-success">
+            <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-plus"></span>
+            Přidat léky
+        </button>
+        <button onclick="
+                        clearSelectedItems('vybraneLekyIds');
+                        getSelectedData('lek', $('#vybraneLekyIds').val(), true, 'vybraneLekyDatagrid');
+                        clearPoleIds();
+                        " class="btn btn-danger">
+            <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-remove"></span>
+            Odebrat všechny léky
+        </button>
+        <input type="hidden" id="vybraneLekyIds" name="selectedIds">
+        <div id="vybraneLekyDatagrid"></div>
+
+        <br>
+        <h3>Přidat rezervaci: </h3>
+        <button onclick="
+                        openWindowForSelectOneWhere('rezervace', false, 'vyzvednuto', '0');
+                        setIdFroDataFromSelectDatagrid('vybraneRezervaceDatagrid');
+                        setIdFroDataFromSelect('vybraneRezervaceIds');
+                        " class="btn btn-success">
+            <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-list-alt"></span>
+            Přidat rezervované léky
+        </button>
+        <button onclick="
+                        clearSelectedItems('vybraneRezervaceIds');
+                        getSelectedData('rezervace', $('#vybraneLekyIds').val(), true, 'vybraneRezervaceDatagrid');
+                        " class="btn btn-danger">
+            <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-remove"></span>
+            Odebrat rezervaci
+        </button>
+        <input type="hidden" id="vybraneRezervaceIds" name="selectedIds">
+        <div id="vybraneRezervaceDatagrid"></div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        getSelectedData('lek', '-12:0', true, 'vybraneLekyDatagrid');
+        getSelectedData('rezervace', '-12:0', true, 'vybraneRezervaceDatagrid');
+    });
+
+    var selectedRezervaceOld = "";
+    function callRezervaceChanged(selectedRezervaceNew) {
+        if (selectedRezervaceOld != selectedRezervaceNew) {
+            selectedRezervaceOld = selectedRezervaceNew;
+            console.log("New value: "+selectedRezervaceNew);
+
+            // add new id
+            var idRezervace = selectedRezervaceOld.split(':');
+            getLekyIdForRezervace(idRezervace[0]);
+
+            // merge with selected lek
+            addIds($("#vybraneLekyIds").val());
+
+            console.log("Reload with:"+getAllIds());
+
+            $("#vybraneLekyIds").val(getAllIds());
+
+            // reload leky frame
+            getSelectedData('lek', getAllIds(), true, 'vybraneLekyDatagrid');
+        }
+    }
+
+    $('#vybraneRezervaceDatagrid').bind("DOMSubtreeModified",function(){
+        callRezervaceChanged($("#vybraneRezervaceIds").val());
+    });
+
+</script>
+
+
+
+
+
+
+

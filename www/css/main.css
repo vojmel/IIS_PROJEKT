@@ -138,3 +138,7 @@ section{
 .snippet-selectedItemsDatagrid-dataGrid {
     height: auto !important;
 }
+
+#addProdejContent {
+    margin-top: 10px !important;
+}

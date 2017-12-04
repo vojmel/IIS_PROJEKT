@@ -18,4 +18,12 @@ class LekarnikManager extends GeneralManager
         }
         return "";
     }
+
+    public function getPobockaID($id){
+        $item = $this->getSpecific($id);
+        if ($item) {
+            return $item->pobockaID;
+        }
+        return "";
+    }
 }

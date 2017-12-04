@@ -49,16 +49,16 @@ class SelectItemControl extends Nette\Forms\Controls\BaseControl
 
         // pro select
         if ($this->selectOne) {
-            $ret .= "<button type=\"button\" class=\"btn btn-default\" onclick=\"openWindowForSelectOne('".$this->odKudSelectovat."');setIdFroDataFromSelectDatagrid('".$genId."_datagrid');setIdFroDataFromSelect('".$this->getHtmlId()."');\">".$this->buttonLabel."</button>";
+            $ret .= "<button type=\"button\" class=\"btn btn-default\" onclick=\"openWindowForSelectOne('".$this->odKudSelectovat."', false);setIdFroDataFromSelectDatagrid('".$genId."_datagrid');setIdFroDataFromSelect('".$this->getHtmlId()."');\">".$this->buttonLabel."</button>";
         }
         else {
-            $ret .= "<button type=\"button\" class=\"btn btn-default\" onclick=\"openWindowForSelect('".$this->odKudSelectovat."');setIdFroDataFromSelectDatagrid('".$genId."_datagrid');setIdFroDataFromSelect('".$this->getHtmlId()."');\">".$this->buttonLabel."</button>";
+            $ret .= "<button type=\"button\" class=\"btn btn-default\" onclick=\"openWindowForSelect('".$this->odKudSelectovat."', false);setIdFroDataFromSelectDatagrid('".$genId."_datagrid');setIdFroDataFromSelect('".$this->getHtmlId()."');\">".$this->buttonLabel."</button>";
         }
 
         // zobrazeni pokud jiz z db prisly hodnoty
         $showPocet = ($this->selectOne)? 'false':'true';
 
-        $ret .= "<script type='text/javascript'>
+        $ret .= "<br><script type='text/javascript'>
 
         $(document).ready(function(){
 getSelectedItemsFor('".$this->getHtmlId()."', '".$this->odKudSelectovat."', ".$showPocet.", '".$genId."_datagrid');

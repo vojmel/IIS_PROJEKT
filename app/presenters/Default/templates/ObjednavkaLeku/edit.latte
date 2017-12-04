@@ -1,0 +1,54 @@
+{block content}
+<div style="margin: 10px 10px 10px 10px;">
+    <h2 n:block="title">{$nadpis}</h2>
+    <div id="addProdejContent">
+        <h3>Vybrané položky:</h3>
+        <button onclick="
+                        openWindowForSelect('lek', true);
+                        setIdFroDataFromSelectDatagrid('vybraneLekyDatagrid');
+                        setIdFroDataFromSelect('vybraneLekyIds');
+                        " class="btn btn-success">
+            <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-plus"></span>
+            Přidat léky
+        </button>
+        <button onclick="
+                        clearSelectedItems('vybraneLekyIds');
+                        getSelectedData('lek', $('#vybraneLekyIds').val(), true, 'vybraneLekyDatagrid');
+                        clearPoleIds();
+                        " class="btn btn-danger">
+            <span style="font-size:16px; margin-right: 15px;" class="pull-left hidden-xs showopacity glyphicon glyphicon-remove"></span>
+            Odebrat všechny léky
+        </button>
+        <input type="hidden" id="vybraneLekyIds" name="selectedIds">
+        <div id="vybraneLekyDatagrid"></div>
+
+        {control addForm}
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log(getSelectedIdsFrom('vybraneLekyIds'));
+        // nalezneme jiz vybrane
+        getSelectedData('lek', getSelectedIdsFrom('vybraneLekyIds'), true, 'vybraneLekyDatagrid');
+
+
+        console.log(getSelectedIdsFrom('vybraneLekyIds'));
+        // ulozime si je vsude
+        $('#vybraneLekyIds').val(getSelectedIdsFrom('vybraneLekyIds'));
+
+
+        console.log(getSelectedIdsFrom('vybraneLekyIds'));
+    });
+
+    function getSelectedIdsFrom(name) {
+        return $('input[name='+name+']').val();
+    }
+
+</script>
+
+
+
+
+
+
+

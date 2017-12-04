@@ -6,7 +6,12 @@ Vybirani itemu
     $( "#menu" ).hide();
     $( "#menu2" ).hide();
     $("#content").css('marginLeft','10px');
+    {if $showNumbers == 'true'}
+        var canSelectMoreTrue = true;
+    {else}
+        var canSelectMoreTrue = false;
+    {/if}
 </script>
 <h1 n:block="title">{$nadpis}</h1>
-<button onclick="sendDataToParent({$site}, {$showNumbers})">Vybrat</button>
+<button onclick="sendDataToParent('{$site|noescape}', {$showNumbers|noescape}, {$inc|noescape})">Vybrat</button>
 {control selectDatagrid}

@@ -20,6 +20,7 @@ abstract class DefaultPresenter extends Nette\Application\UI\Presenter
         parent::beforeRender(); // nezapomeňte volat metodu předka, stejně jako u startup()
         $this->template->menuItems = array(
             'Prodej léků' => 'ProdejLeku:',
+            'Objednání léků' => 'ObjednavkaLeku:',
         );
 
         $this->template->user = $this->getUser();

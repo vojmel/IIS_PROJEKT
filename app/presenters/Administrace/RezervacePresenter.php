@@ -146,4 +146,30 @@ class RezervacePresenter extends GeneralAdminPresenter
         $data["datumExpirace"] = Nette\DateTime::from($data["datumExpirace"]);
         return $data;
     }
+
+
+    /**
+     * Na vystup vrati JSON, ktery obsahuje jen id leku pro zeyervaci
+     *
+     * @param $rezervaceID
+     */
+    public function renderGetleky($rezervaceID) {
+
+        $item = $this->modelManager->getSpecific($rezervaceID);
+
+        if ($item) {
+
+            $data = array();
+            foreach ($this->modelManager->getLeky($rezervaceID) as $lek) {
+                $data[] = array($lek->lekID, $lek->mnozstvi);
+            }
+
+            $this->sendJson($data);
+        }
+        else {
+            $this->sendJson(array());
+        }
+
+        return;
+    }
 }
