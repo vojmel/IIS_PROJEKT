@@ -21,38 +21,49 @@
 	<dt>Autoøi</dt>
 	<dd>Vojtìch Meluzín <!-- Nahraïte skuteèným jménem a e-mailem autora a popisem èinnosti -->
 	    <a href="mailto:xmeluz04@stud.fit.vutbr.cz">xmeluz04@stud.fit.vutbr.cz</a> -
-		databázový subsystém
+		databázový subsystém a GUI implementace
 	</dd>
 	<dd>Matìj Mlejnek <!-- Nahraïte skuteèným jménem a e-mailem autora a popisem èinnosti -->
 	    <a href="mailto:xmlejn04@stud.fit.vutbr.cz">xmlejn04@stud.fit.vutbr.cz</a> - 
 		správa u¾ivatelù a u¾ivatelské rozhraní
 	</dd>
 	<dt>URL aplikace</dt>
-	<dd><a href="http://www.stud.fit.vutbr.cz/~xautor01/IIS">http://www.stud.fit.vutbr.cz/~xautor01/IIS</a></dd>
+	<dd><a href="http://www.stud.fit.vutbr.cz/~xmeluz04/IIS/www/">http://www.stud.fit.vutbr.cz/~xmeluz04/ISS/www/</a></dd>
 	<dd>(pokud má aplikace více vstupních stránek, napi¹te obdobnì dal¹í URL)</dd>
 </dl>
 
 <h2>U¾ivatelé systému pro testování</h2>
-<p>Uveïte prosím existující zástupce <strong>v¹ech rolí u¾ivatelù</strong>.</p>
 <table>
 <tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
 <tr><td>admin</td><td>admin</td><td>Administrátor</td></tr>
-<tr><td>l</td><td>prodavac</td><td>Prodavaè</td></tr>
-<tr><td>franta</td><td>franta</td><td>Zákazník</td></tr>
+<tr><td>TomRychtec</td><td>654321</td><td>Lékárník</td></tr>
 </table>
 
 <h2>Implementace</h2>
-<p>Struèná dokumentace k implementaci, která popisuje, které PHP skripty implementují jednotlivé pøípady pou¾ití uvedené v use-case diagramu z IDS. V pøípadì, ¾e bylo nutno pøi implementaci uèinit zmìny v návrhu, musí být v dokumentaci zdùvodnìny.</p>
-
+<p>Aplikace je psaná v PHP za pou¾ití frameworku Nette <a href="https://nette.org/cs/">Odkaz</a> ve verzi 2.3.0 a externí roz¹íøení Mesour DataGrid <a href="http://grid.mesour.com/version2/" >Odkaz</a> ve verzi 2.0. 
+Pro práci v JavaScriptu jsme zvolili knihovnu jQeury<a href="https://jquery.com/">Odkaz</a>  a jQuery-UI<a href="https://jqueryui.com/">Odkaz</a> . 
+Jako celkóvé téma nám poslou¾il Bootstrap<a href="https://getbootstrap.com/">Odkaz</a> ve verzi 3.
+</p>
+<p>
+Celý systém je rozdìlen do dvou èástí Lékárna a Administrace. 
+Lékárna je urèena pro Lékárníky, kteøí zde vytváøejí a editují prodeje, rezervace a vytváøejí nové objednávky. Od pùvodního use case se role Lékárníka zásadnì zmìnila. Po zamy¹lení se na jeho mo¾nostmi a prací jsme usoudili, ¾e je zbyteèné, aby Lékárník mohl pøidávat nové dodavatele a p¹e jsme tak nechali na Administrátorovy.
+Administrace je urèena pro Správce lékáren. Je pøístupná pouze u¾ivateli s oprávnìním správce. V administraci je mo¾né pøistupovat ke v¹em prvkùm na¹eho modelu. Má i stejnì jako lékárník pøístup do Lékarního systému. Lze zde i upravovat u¾ivatelské úèty a pøidávat dal¹í u¾ivatele.
+</p>
 <h2>Instalace</h2>
 <ul>
-<li>Struènì popi¹te postup instalace na server</li>
-<li>Softwarové po¾adavky (verze PHP apod.)</li>
-<li>Jak rozbalit, konfigurovat, inicializovat databází, ...</li>
+<li>Pomocí composer.json si stáhneme potøebné knihovny. Celou slo¾ku aplikace <i>app</i> a <i>www</i> zkopírujeme do adresáøe. Potom ve www slo¾ce v souboru .htaccess upravíme ROOT_PATH</li>
+<li>Minimální po¾adavky:PHP verze 5.3, MySQL </li>
+<li>Databáze se nakonfiguruje pomocí pøibaleného scriptu <i>create_db.sql</i>.</li>
 </ul>
 
 <h2>Známé problémy</h2>
-<p>Zde popi¹te, které body zadání (IDS a IIS) nejsou implementovány a z jakého dùvodu. Napø. &bdquo;Z èasových dùvodù nebyla implementována správa u¾ivatelù.&rdquo; Pomù¾ete tím zrychlit opravování, kdy¾ neimplementované funkce nebudeme muset dlouze hledat.</p>
-
+<ul>
+<li>
+	Z èasových dùvodù nebyla provedena implementace exportù. Není ale vùbec slo¾ítá, staèí jen upravit volání dataGridu.	
+</li>
+<li>
+	Z èasových dùvodù nebyla provedena implementace pøedpisù k lékùm. Implementace by probíhala podobnì jako u ostatních funkcionalit, které jsou pro lékárníky, jen s tím rozdílem, ¾e po jejím dokonèení by se musela zapojit do Prodeje.
+</li>
+</ul>
 </body>
 </html>
